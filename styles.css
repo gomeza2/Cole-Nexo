@@ -86,3 +86,8 @@ body.dark .learn-a{color:#20211e}
 body.dark .learn-label{color:#c8d9ed}
 @media(max-width:850px){.wellness-grid,.learning-grid{grid-template-columns:1fr}.learning-overview{grid-template-columns:1fr}.learning-footer{align-items:flex-start;flex-direction:column}}
 @media(max-width:700px){.wellness-counter{align-items:flex-start;flex-direction:column}.counter-actions{justify-content:flex-start}.learning-footer .btn{width:100%}}
+
+/* Navegación cómoda también en pantallas pequeñas */
+.mobile-nav{display:none}
+.rail-nav{overflow-y:auto;scrollbar-width:thin}
+@media(max-width:700px){.mobile-nav{display:flex;position:sticky;top:0;z-index:15;gap:5px;overflow-x:auto;overscroll-behavior-x:contain;padding:8px 12px;background:var(--paper);border-bottom:1px solid var(--line);scrollbar-width:none}.mobile-nav::-webkit-scrollbar{display:none}.mobile-nav .nav-item{display:flex;align-items:center;justify-content:center;flex:0 0 auto;gap:6px;min-height:35px;padding:8px 11px;border:1px solid transparent;border-radius:99px;background:transparent;color:var(--muted);font-size:11px}.mobile-nav .nav-item span{font-size:14px}.mobile-nav .nav-item b{font-size:10px;font-weight:700}.mobile-nav .nav-item.active{background:var(--ink);color:var(--paper)}.mobile-nav .nav-item:hover{background:var(--bg);color:var(--ink)}}
