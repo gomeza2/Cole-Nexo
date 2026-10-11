@@ -715,24 +715,7 @@
     });
   }
 
-  async function loadWall() {
-    if (!client || !user || !document.querySelector('#community-wall-list')) return;
-    const list = document.querySelector('#community-wall-list');
-    list.innerHTML = '<div class="community-empty">Cargando ideas…</div>';
-    const result = await client.rpc('get_discovery_wall', {p_limit:20});
-    if (result.error) {
-      list.innerHTML = '<div class="community-empty">No pudimos cargar el muro. Revisá que hayas ejecutado supabase/phase2-community.sql.</div>';
-      return;
-    }
-    const posts = Array.isArray(result.data) ? result.data : [];
-    list.innerHTML = posts.length ? posts.map(function (post) {
-      const date = new Date(post.created_at);
-      const label = Number.isNaN(date.getTime()) ? '' : date.toLocaleDateString('es-AR',{day:'numeric',month:'short'});
-      return '<article class="community-post"><div class="community-post-label">IDEA COMPARTIDA</div><p>'+escapeHTML(post.body)+'</p><footer><span>'+escapeHTML(post.author_label || 'Anónimo')+' · '+escapeHTML(label)+'</span><div class="community-post-tools"><button type="button" data-community-action="report-post" data-post-id="'+escapeHTML(post.post_id)+'">Reportar</button><button type="button" data-community-action="block-alias" data-alias-id="'+escapeHTML(post.author_alias_id)+'">Ocultar alias</button></div></footer></article>';
-    }).join('') : '<div class="community-empty">Todavía no hay ideas aprobadas. Podés enviar la primera; aparecerá cuando la revise el equipo.</div>';
-  }
-
-  async function refresh() {
+    async function refresh() {
     if (!client) return;
     const response = await client.auth.getSession();
     user = response.data && response.data.session ? response.data.session.user : null;
