@@ -39,3 +39,29 @@ El esquema inicial está en **supabase/schema.sql**. Crea tablas separadas para 
 - Implementar el flujo de sesión y sincronización real en el cliente; el SQL por sí solo no crea una cuenta ni sincroniza los datos actuales.
 - Implementar push real con Service Worker, suscripción del navegador y backend que envíe notificaciones. No activar push mientras no haya opt-in claro y mecanismos para cancelar la suscripción.
 - Medir activación, retención D7, opt-in de recordatorios y errores de migración usando métricas agregadas que no incluyan el contenido de las notas de bienestar.
+
+
+## Compañero de Ruta — reflexión semanal asistida por IA
+
+### Experiencia y privacidad
+- La sección Mi Ruta / Compañero de Ruta muestra un diario semanal y una sugerencia pequeña.
+- Los domingos aparece una invitación discreta en Inicio. No abre por sí sola, no genera reflexión en segundo plano y no envía datos automáticamente.
+- Las notas opcionales sobre comidas y sensaciones físicas se guardan en el navegador al pulsar “Guardar sólo en este dispositivo”.
+- Con el consentimiento apagado, la reflexión y la sugerencia se generan localmente; no se llama a la API.
+- Sólo si la persona activa “Quiero compartir el contexto seleccionado con la IA” y luego toca un botón, el navegador envía los datos agregados de los últimos siete días y las notas opcionales al Worker. La casilla está apagada por defecto.
+- La reflexión generada se guarda localmente. La exportación e importación JSON incluye sus dos claves de almacenamiento.
+- La IA no diagnostica, no atribuye causas seguras, no juzga comidas ni cuerpo, no recomienda dietas y no reemplaza atención profesional.
+
+### Conectar OpenAI en el Worker existente
+1. El archivo companion-config.js contiene la URL pública de /api/companion. No contiene secretos.
+2. En Cloudflare, abre Workers & Pages → nexo-news-proxy → Settings → Variables and Secrets y agrega un Secret llamado OPENAI_API_KEY. Usa una clave de la API de OpenAI, no una clave de ChatGPT.
+3. El Worker usa gpt-5-mini por defecto. Si tu proyecto necesita otro modelo compatible, define la variable OPENAI_MODEL.
+4. Abre workers/news-worker.js en GitHub, copia el archivo completo, pégalo en Edit Code del Worker reemplazando la versión anterior y pulsa Deploy. El código conserva la ruta de noticias y añade el POST /api/companion.
+5. La clave no se debe incluir en app.js, companion-config.js ni en el repositorio.
+
+### Seguridad antes de publicar a gran escala
+- El Worker valida y limita el tamaño del cuerpo, reduce los campos recibidos, utiliza store:false para la petición de Responses API y comprueba el origen permitido. Eso no es una promesa de retención cero por parte del proveedor.
+- CORS no autentica el endpoint ni evita que un cliente externo intente llamarlo. Configura una regla de rate limiting de Cloudflare para /api/companion antes de abrirlo al público y añade alertas/límites de gasto.
+- La interfaz avisa que las notas opcionales se enviarán al proveedor de IA sólo con consentimiento explícito. No prometas confidencialidad absoluta ni anonimato perfecto.
+- Revisa el aviso de privacidad, el consentimiento apropiado para la edad y los requisitos legales del mercado antes de usar datos de bienestar de menores.
+
