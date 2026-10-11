@@ -48,3 +48,12 @@ Los datos se guardan en el navegador, no se sincronizan entre dispositivos. No h
 - Navegación horizontal en pantallas pequeñas para acceder a todas las ramas.
 - El buscador reconoce términos de bienestar, organización y aprendizaje.
 - El registro personal, el progreso y los favoritos continúan siendo locales a cada navegador.
+
+## Estudio de Creación Viral (Mime Studio)
+
+- Biblioteca de plantillas populares cargada desde el endpoint público `https://api.imgflip.com/get_memes?type=image`.
+- Buscador local sobre las plantillas recibidas, filtros rápidos por palabras y selección del fondo con vista previa.
+- Textos superior e inferior editables y arrastrables directamente sobre el lienzo; color y tamaño ajustables.
+- Botón «Sorpréndeme» que combina una plantilla aleatoria del catálogo con frases predefinidas.
+- Exportación del lienzo como PNG cuando el origen de la imagen permite exportación desde canvas. Algunas plantillas externas pueden bloquearla por restricciones CORS.
+- La búsqueda filtra el catálogo popular recibido de la API; la búsqueda completa del catálogo de Imgflip es una función premium y no se usa aquí.
