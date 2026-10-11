@@ -866,3 +866,26 @@ body.dark .nexo-pwa-panel{box-shadow:0 24px 70px #0007}
 @media(max-width:700px){.nexo-pwa-toggle{padding:8px 10px;font-size:10px;margin-left:4px}.nexo-pwa-panel{right:14px;bottom:14px;padding:18px}}
 @media(max-width:420px){.nexo-pwa-toggle{font-size:0;gap:0;width:34px;height:34px;padding:0}.nexo-pwa-toggle::first-letter{font-size:15px}.nexo-pwa-panel h2{font-size:19px}}
 @media(prefers-reduced-motion:reduce){.nexo-pwa-toggle{transition:none}}
+
+
+/* Fase 4 — diagnóstico de conexión Supabase y preparación QA */
+.community-connection-card.is-connected{align-items:flex-start}
+.community-diagnostics-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:14px}
+.community-diagnostics-actions .btn{min-height:36px}
+.community-diagnostics-results{margin-top:12px;max-width:680px}
+.community-diagnostics-results>p{margin:0;color:var(--muted);font-size:11px;line-height:1.7}
+.community-diagnostic-list{display:grid;gap:8px}
+.community-diagnostic-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+.community-diagnostic-row>div{min-width:0}
+.community-diagnostic-row strong{display:block;color:var(--ink);font-size:11px}
+.community-diagnostic-row p{margin:4px 0 0;color:var(--muted);font-size:10px;line-height:1.6}
+.community-diagnostic-row>span{flex-shrink:0;padding:4px 6px;border-radius:6px;font:500 8px 'DM Mono',monospace;letter-spacing:.04em;white-space:nowrap}
+.community-diagnostic-row.is-ok>span{background:#e6efdc;color:#3a5b2f}
+.community-diagnostic-row.is-error>span{background:#f8e5e0;color:#923c31}
+.community-diagnostic-row.is-manual>span{background:#f6eed8;color:#765e23}
+.community-diagnostics-actions button:disabled{opacity:.65;cursor:wait}
+body.dark .community-diagnostic-row{background:var(--paper)}
+body.dark .community-diagnostic-row.is-ok>span{background:#2d3b29;color:#c9e3bc}
+body.dark .community-diagnostic-row.is-error>span{background:#452b28;color:#f2bdb5}
+body.dark .community-diagnostic-row.is-manual>span{background:#403821;color:#ead69a}
+@media(max-width:520px){.community-diagnostics-actions{align-items:stretch;flex-direction:column}.community-diagnostics-actions .btn{width:100%}.community-diagnostic-row{gap:8px;padding:10px}.community-diagnostic-row>span{font-size:7px}}
