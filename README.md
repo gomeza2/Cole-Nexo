@@ -172,3 +172,12 @@ Los datos se guardan en el navegador, no se sincronizan entre dispositivos. No h
 La pantalla **Comunidad** añade un temporizador de sala con código, presencia y control del anfitrión, además de un muro seudónimo para compartir descubrimientos. Las publicaciones quedan pendientes hasta aprobación humana; se puede reportar contenido y ocultar un alias. No hay chat, cámara ni micrófono. En modo de demo aparecen ejemplos rotulados como tales.
 
 Para conectar el backend, sigue **PHASE-2-IMPLEMENTATION.md** y ejecuta primero **supabase/schema.sql**, luego **supabase/phase2-community.sql**. La app requiere URL de Supabase, publishable key y OAuth configurados en **community-config.js**; sin esos pasos funciona en modo local.
+
+
+## Fase 3 — PWA e inicio sin conexión
+
+- **Instalación:** `manifest.webmanifest` y el botón «Instalar» ofrecen la opción nativa cuando el navegador la admite, con instrucciones manuales para otros navegadores.
+- **Shell local:** `service-worker.js` guarda archivos estáticos de NEXO y vuelve a `index.html` cuando se navega sin conexión. La caché no almacena respuestas de API, tokens ni datos personales.
+- **Interfaz adaptable:** `pwa.js` muestra instrucciones específicas para iOS, Android y escritorio y explica qué partes necesitan internet.
+- **Límite:** la primera visita requiere conexión y HTTPS. El offline no convierte en locales Supabase, OAuth, noticias ni Compañero de Ruta. No se incluyen push notifications ni sincronización cloud offline.
+- **Guía y pruebas:** ver `PHASE-3-IMPLEMENTATION.md` y la sección PWA del `RELEASE-CHECKLIST.md`.
