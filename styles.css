@@ -32,3 +32,57 @@
 body.dark .agenda-focus{background:linear-gradient(145deg,var(--paper),#273224)}
 @media(max-width:850px){.agenda-grid{grid-template-columns:1fr}.agenda-date{white-space:normal}}
 @media(max-width:700px){.agenda-date{align-self:flex-start}.focus-ring{width:170px;height:170px}.focus-ring strong{font-size:34px}.agenda-save-row{align-items:flex-start;flex-direction:column}}
+
+/* NEXO 3.0 — nuevos mundos, rutas y bienestar cotidiano */
+.world-wellbeing,.world-learning{position:relative}
+.graphic-wellbeing{background:#f7e3d6;display:grid;place-items:center}
+.wellness-orbit{position:absolute;width:150px;height:70px;border:2px solid #bd8f79;border-radius:50%;transform:rotate(-28deg)}
+.wellness-core{display:grid;place-items:center;width:67px;height:67px;border-radius:23px;background:#fff7ee;color:#a56750;font:700 49px Manrope,sans-serif;transform:rotate(8deg);box-shadow:0 10px 20px #784a2518}
+.wellness-spark{position:absolute;right:22%;top:16%;font-size:27px;color:#b77862}
+.wellness-word{position:absolute;bottom:12px;left:13px;font:9px 'DM Mono',monospace;letter-spacing:1px;color:#704d40}
+.graphic-learning{background:#dbe8f5}
+.learn-tile{position:absolute;display:grid;place-items:center;width:56px;height:59px;border-radius:14px;font:800 25px Manrope,sans-serif;box-shadow:0 7px 16px #263f5515}
+.learn-a{left:14%;top:17%;background:#fff9ec;transform:rotate(-9deg)}
+.learn-b{left:42%;top:31%;background:#c5d5ff;transform:rotate(8deg)}
+.learn-c{right:12%;top:13%;background:#d6ed8e;transform:rotate(12deg)}
+.learn-label{position:absolute;bottom:12px;left:13px;font:9px 'DM Mono',monospace;letter-spacing:1px;color:#3e566b}
+.wellness-note{padding:15px 17px;border:1px solid var(--line);border-radius:14px;background:var(--green);font-size:12px;line-height:1.7;margin-bottom:15px}
+.wellness-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;align-items:start}
+.wellness-grid .tool-panel h3,.learning-path h3,.learning-footer h3{font:800 21px/1.2 Manrope,sans-serif;letter-spacing:-.6px;margin:3px 0 13px}
+.wellness-grid .field{margin-top:13px}
+.wellness-grid .field input,.wellness-grid .field select,.wellness-grid .field textarea{margin-top:2px}
+.wellness-counter{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 0;margin:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.wellness-counter>div:first-child{display:flex;flex-direction:column;gap:5px}
+.wellness-counter span{font-size:11px;color:var(--muted)}
+.wellness-counter strong{font:800 31px Manrope,sans-serif;font-variant-numeric:tabular-nums}
+.counter-actions{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.wellness-checks{display:flex;flex-direction:column;gap:11px;margin-top:16px;font-size:12px}
+.wellness-checks label{display:flex;align-items:center;gap:9px}
+.wellness-checks input,.learning-module input{width:17px;height:17px;accent-color:#779437;flex-shrink:0}
+.wellness-tip{padding:14px;border-radius:12px;background:var(--bg);margin-top:15px;font-size:12px;line-height:1.65}
+.wellness-tip p{color:var(--muted);margin:7px 0 0}
+#wellness-form .btn{margin-right:7px;margin-bottom:7px}
+.learning-overview{display:grid;grid-template-columns:1fr minmax(140px,.7fr);gap:18px;align-items:center;margin-bottom:15px}
+.learning-overview h3{font:800 23px Manrope,sans-serif;margin:0 0 8px}
+.learning-overview p{line-height:1.65;margin:0}
+.learning-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;align-items:start}
+.learning-path-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+.learning-count{font:11px 'DM Mono',monospace;color:var(--muted)}
+.learning-desc{line-height:1.65;min-height:35px}
+.learning-modules{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.learning-module{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--line);padding:13px;border-radius:12px;background:var(--bg);cursor:pointer}
+.learning-module span{display:flex;flex-direction:column;gap:5px;min-width:0}
+.learning-module strong{font-size:12px;line-height:1.45}
+.learning-module small{font-size:11px;color:var(--muted);line-height:1.55}
+.learning-module:has(input:checked){border-color:#a9c95c;background:var(--green)}
+.learning-footer{margin-top:15px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.learning-footer p:last-child{margin:0;line-height:1.65}
+body.dark .graphic-wellbeing{background:#49362f}
+body.dark .wellness-core{background:#f8e9dc;color:#784c3b}
+body.dark .wellness-orbit{border-color:#d9a28a}
+body.dark .wellness-word{color:#f1cdbb}
+body.dark .graphic-learning{background:#2c3b4b}
+body.dark .learn-a{color:#20211e}
+body.dark .learn-label{color:#c8d9ed}
+@media(max-width:850px){.wellness-grid,.learning-grid{grid-template-columns:1fr}.learning-overview{grid-template-columns:1fr}.learning-footer{align-items:flex-start;flex-direction:column}}
+@media(max-width:700px){.wellness-counter{align-items:flex-start;flex-direction:column}.counter-actions{justify-content:flex-start}.learning-footer .btn{width:100%}}
