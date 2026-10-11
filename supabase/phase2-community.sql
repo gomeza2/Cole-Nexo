@@ -595,7 +595,7 @@ begin
       'Anónimo · ' || upper(substr(replace(ci.alias_id::text, '-', ''), 1, 6)),
       p.status::text,
       count(r.id)::integer,
-      coalesce(array_agg(distinct r.reason) filter (where r.reason is not null), array[]::text[])
+      coalesce(array_agg(distinct r.reason::text) filter (where r.reason is not null), array[]::text[])
     from public.discovery_posts p
     join public.community_identities ci on ci.user_id = p.author_id
     left join public.discovery_reports r on r.post_id = p.id
@@ -616,7 +616,7 @@ begin
   if coalesce(auth.jwt() -> 'app_metadata' ->> 'nexo_role', '') <> 'moderator' then
     raise exception 'Moderator access required' using errcode = '42501';
   end if;
-  if p_status not in ('approved','rejected','removed') then
+  if p_status is null or p_status not in ('approved','rejected','removed') then
     raise exception 'Invalid moderation status' using errcode = '22023';
   end if;
   update public.discovery_posts
