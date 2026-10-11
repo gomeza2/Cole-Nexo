@@ -206,3 +206,61 @@ body.dark .home-wellbeing-card{background:var(--paper);border-color:var(--line)}
 body.dark .home-chair-art{background:#262c21}
 body.dark .home-wellbeing-card-footer{border-color:var(--line)}
 body.dark .home-wellbeing-card-footer>span,.dark .home-wellbeing-card-footer>span{color:var(--muted)}
+
+/* Reflejos Ninja — juego de reacción expandible */
+.reflex-card{padding:0;overflow:hidden;align-self:start}
+.reflex-expand-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:21px 22px;border:0;background:linear-gradient(110deg,#fbfcf7,#eef5e1);color:var(--ink);text-align:left;cursor:pointer}
+.reflex-expand-toggle>span:first-child{display:grid;gap:7px}
+.reflex-expand-toggle .section-label{margin:0;color:#63744a}
+.reflex-expand-toggle strong{font:800 24px/1.1 Manrope,sans-serif;letter-spacing:-.7px}
+.reflex-expand-toggle small{font-size:12px;color:var(--muted)}
+.reflex-expand-icon{display:grid;place-items:center;width:37px;height:37px;flex-shrink:0;border:1px solid #dbe5cb;border-radius:50%;background:#fff;font-size:22px;transition:transform .2s,background .2s}
+.reflex-expand-toggle:hover .reflex-expand-icon{transform:rotate(90deg);background:#e6f3cc}
+.reflex-game{padding:20px 22px 22px;border-top:1px solid var(--line)}
+.reflex-game[hidden]{display:none}
+.reflex-game-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.reflex-status-pill{padding:6px 9px;border-radius:999px;background:#eceee8;color:#666b60;font:500 9px 'DM Mono',monospace;letter-spacing:.5px}
+.reflex-round{font:400 8px 'DM Mono',monospace;letter-spacing:.5px;color:var(--muted)}
+.reflex-target{position:relative;display:grid;place-items:center;width:min(100%,230px);aspect-ratio:1;margin:22px auto 13px;padding:0;border:0;border-radius:50%;color:#fff;cursor:default;isolation:isolate;transition:background .25s,box-shadow .25s,transform .2s}
+.reflex-target:disabled{cursor:default}
+.reflex-target-idle,.reflex-target-waiting{background:radial-gradient(circle at 38% 32%,#a7aba6,#858b85 67%,#6c726c);box-shadow:0 0 0 10px #8c93821c,0 10px 26px #252c201f}
+.reflex-target-idle:before,.reflex-target-waiting:before{content:"";position:absolute;inset:-8px;border:1px solid #9ba09655;border-radius:50%;animation:reflex-pulse 2s ease-in-out infinite;z-index:-1}
+.reflex-target-go{background:radial-gradient(circle at 36% 30%,#aaff86,#53f14c 55%,#23c936);box-shadow:0 0 0 10px #70ef5827,0 0 46px #59ed4e8a;cursor:pointer;animation:reflex-green-pop .22s ease-out}
+.reflex-target-go .reflex-target-core{position:absolute;inset:20%;border:2px solid #ffffff65;border-radius:50%}
+.reflex-target-go .reflex-target-word{color:#103b17;text-shadow:none}
+.reflex-target-early{background:radial-gradient(circle at 35% 30%,#ffc4ba,#ed625b 65%,#c93332);box-shadow:0 0 0 10px #ed625b20}
+.reflex-target-result{background:radial-gradient(circle at 36% 30%,#d4f3a2,#a5d85e 70%,#7eb23f);box-shadow:0 0 0 10px #a5d85e25}
+.reflex-target-word{position:relative;z-index:2;font:800 clamp(18px,3vw,24px)/1 Manrope,sans-serif;letter-spacing:1px;color:#fff;text-shadow:0 2px 8px #0002;pointer-events:none}
+.reflex-result{text-align:center;min-height:92px}
+.reflex-result>strong{display:block;font:800 clamp(48px,8vw,68px)/1 Manrope,sans-serif;letter-spacing:-2.5px;font-variant-numeric:tabular-nums}
+.reflex-result>strong small{font:600 17px Manrope,sans-serif;letter-spacing:0;color:var(--muted)}
+.reflex-result p{margin:9px 0 14px;font-size:12px;line-height:1.6;color:var(--muted)}
+.reflex-too-fast{font-weight:800;color:#dc3737}
+.reflex-actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:10px 0 22px}
+.reflex-actions .btn{min-width:155px}
+.reflex-leaderboard{padding-top:17px;border-top:1px solid var(--line)}
+.reflex-board-heading{display:flex;align-items:end;justify-content:space-between;gap:10px}
+.reflex-board-heading .section-label{margin:0 0 5px}
+.reflex-board-heading h4{margin:0;font:800 17px Manrope,sans-serif;letter-spacing:-.4px}
+.reflex-board-heading>span{font:400 8px 'DM Mono',monospace;color:var(--muted)}
+.reflex-scores{list-style:none;display:grid;gap:7px;padding:0;margin:14px 0 10px}
+.reflex-score-row{display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:var(--paper)}
+.reflex-rank{display:grid;place-items:center;width:27px;height:27px;border-radius:8px;background:#eef5e2;color:#526b32;font:500 10px 'DM Mono',monospace}
+.reflex-score-row strong{margin-left:auto;font:800 19px Manrope,sans-serif;font-variant-numeric:tabular-nums}
+.reflex-score-row>span:nth-last-child(2){font-size:10px;color:var(--muted)}
+.reflex-crown{color:#719d2f;font-size:15px}
+.reflex-empty{padding:15px;border-radius:10px;background:var(--surface,#f7f8f4);font-size:11px;text-align:center;color:var(--muted)}
+.reflex-local-note{margin:0;font-size:9px;line-height:1.5;color:var(--muted)}
+.reflex-shake{animation:reflex-shake .28s ease-in-out}
+.reflex-confetti{position:absolute;top:42%;left:50%;width:0;height:0;pointer-events:none;z-index:8}
+.reflex-confetti i{position:absolute;left:0;top:0;width:7px;height:11px;border-radius:2px;background:#b7df67;animation:reflex-confetti-fall .95s cubic-bezier(.15,.7,.2,1) var(--confetti-delay) both;transform:translate(var(--confetti-x),var(--confetti-y)) rotate(var(--confetti-rotate))}
+.reflex-confetti i:nth-child(3n){background:#b9b0ff}.reflex-confetti i:nth-child(3n + 1){background:#ffc49e}.reflex-confetti i:nth-child(4n){background:#5bdc60}
+@keyframes reflex-pulse{0%,100%{transform:scale(.96);opacity:.45}50%{transform:scale(1.05);opacity:.95}}
+@keyframes reflex-green-pop{0%{transform:scale(.94)}75%{transform:scale(1.035)}100%{transform:scale(1)}}
+@keyframes reflex-shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes reflex-confetti-fall{0%{opacity:1;translate:0 0;rotate:0deg}100%{opacity:0;translate:var(--confetti-x) var(--confetti-y);rotate:var(--confetti-rotate)}}
+@media(max-width:640px){.reflex-expand-toggle{padding:18px}.reflex-game{padding:17px}.reflex-target{width:min(74vw,215px)}.reflex-board-heading{align-items:flex-start;flex-direction:column;gap:5px}}
+@media(prefers-reduced-motion:reduce){.reflex-target-idle:before,.reflex-target-waiting:before,.reflex-target-go,.reflex-shake,.reflex-confetti i{animation:none!important}.reflex-expand-icon{transition:none}}
+body.dark .reflex-expand-toggle{background:var(--paper);color:var(--ink)}
+body.dark .reflex-expand-icon{background:var(--surface);border-color:var(--line)}
+body.dark .reflex-score-row{background:var(--surface)}
