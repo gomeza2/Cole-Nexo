@@ -113,7 +113,7 @@
       area.innerHTML = '<div class="community-connection-card"><div><span class="community-connection-pill">ACCESO A LA COMUNIDAD</span><h3>Entrá para cuidar tu espacio.</h3><p>Usamos una cuenta para limitar abusos y permitir reportes; el muro público no muestra tu cuenta ni tu correo.</p></div><div class="community-auth-buttons"><button type="button" class="btn btn-dark" data-community-action="login-google">Continuar con Google</button><button type="button" class="btn btn-outline" data-community-action="login-discord">Continuar con Discord</button></div></div>';
       return;
     }
-    area.innerHTML = '<div class="community-connection-card is-connected"><div><span class="community-connection-pill is-connected">SESIÓN ACTIVA</span><h3>Estás dentro; usá un alias, no datos personales.</h3><p>La identidad de acceso queda privada. En el muro sólo se muestra un alias aleatorio para ayudar a moderar, reportar y bloquear.</p></div><button type="button" class="btn btn-quiet" data-community-action="logout">Cerrar sesión</button></div>';
+    area.innerHTML = '<div class="community-connection-card is-connected"><div class="community-connection-copy"><span class="community-connection-pill is-connected">SESIÓN ACTIVA</span><h3>Estás dentro; usá un alias, no datos personales.</h3><p>La identidad de acceso queda privada. En el muro sólo se muestra un alias aleatorio para ayudar a moderar, reportar y bloquear.</p><div class="community-diagnostics-actions"><button type="button" class="btn btn-outline" data-community-action="diagnostics">Comprobar conexión</button><button type="button" class="btn btn-quiet" data-community-action="logout">Cerrar sesión</button></div><div class="community-diagnostics-results" id="community-diagnostics-results" aria-live="polite"><p>Podés verificar la sesión y la RPC del muro antes de probar las salas con otra cuenta.</p></div></div></div>';
   }
 
   function renderRoomArea() {
@@ -586,6 +586,113 @@
     await loadWall();
   }
 
+  function renderDiagnostics(items) {
+    const host = document.querySelector('#community-diagnostics-results');
+    if (!host) return;
+    host.innerHTML = '<div class="community-diagnostic-list">' + items.map(function (item) {
+      const kind = item.manual ? 'is-manual' : item.ok ? 'is-ok' : 'is-error';
+      const label = item.manual ? 'PRUEBA MANUAL' : item.ok ? 'OK' : 'REVISAR';
+      return '<div class="community-diagnostic-row ' + kind + '"><div><strong>' + escapeHTML(item.label) + '</strong><p>' + escapeHTML(item.details) + '</p></div><span>' + label + '</span></div>';
+    }).join('') + '</div>';
+  }
+
+  async function runConnectionDiagnostics(button) {
+    const trigger = button || document.querySelector('[data-community-action="diagnostics"]');
+    const host = document.querySelector('#community-diagnostics-results');
+    if (!host) return;
+    if (!configured) {
+      renderDiagnostics([{label:'Configuración de Supabase',ok:false,details:'Completá URL y publishable key en community-config.js.'}]);
+      return;
+    }
+    if (!client) {
+      renderDiagnostics([{label:'Cliente Supabase',ok:false,details:'No se inicializó el SDK. Revisá la carga de @supabase/supabase-js y la URL/configuración del proyecto.'}]);
+      return;
+    }
+    if (trigger) {
+      trigger.disabled = true;
+      trigger.textContent = 'Comprobando…';
+    }
+    host.innerHTML = '<p>Comprobando sesión y permisos del muro…</p>';
+    const items = [];
+    try {
+      const authResult = await client.auth.getUser();
+      if (authResult.error || !authResult.data || !authResult.data.user) {
+        items.push({
+          label: 'Sesión del servidor',
+          ok: false,
+          details: 'Supabase no pudo validar la sesión actual. Cerrá sesión, volvé a ingresar y revisá Auth → URL Configuration si hay problemas de redirección.'
+        });
+        items.push({
+          label: 'RPC del muro',
+          ok: false,
+          details: 'No se probó porque la sesión no quedó validada.'
+        });
+        items.push({
+          label: 'Salas en tiempo real con dos cuentas',
+          manual: true,
+          details: 'Pendiente: requiere abrir una sala en una cuenta de prueba y entrar desde un segundo perfil de navegador.'
+        });
+        renderDiagnostics(items);
+        setStatus('No se pudo validar la sesión con Supabase. Revisá la configuración de Auth y volvé a iniciar sesión.', true);
+        return;
+      }
+
+      user = authResult.data.user;
+      items.push({
+        label: 'Sesión del servidor',
+        ok: true,
+        details: 'Supabase validó la sesión iniciada.'
+      });
+
+      const wallResult = await client.rpc('get_discovery_wall', {p_limit:1});
+      if (wallResult.error) {
+        items.push({
+          label: 'RPC y permisos del muro',
+          ok: false,
+          details: 'No respondió get_discovery_wall. Confirmá que ejecutaste supabase/phase2-community.sql y revisá los permisos de authenticated.'
+        });
+      } else {
+        items.push({
+          label: 'RPC y permisos del muro',
+          ok: true,
+          details: 'get_discovery_wall respondió. Esto no valida por sí solo todas las políticas ni las funciones de las salas.'
+        });
+      }
+      items.push({
+        label: 'Salas en tiempo real con dos cuentas',
+        manual: true,
+        details: 'Pendiente: requiere abrir una sala en una cuenta de prueba y entrar desde un segundo perfil de navegador.'
+      });
+      renderDiagnostics(items);
+
+      const checked = items.filter(function (item) { return !item.manual; });
+      const passed = checked.filter(function (item) { return item.ok; }).length;
+      if (passed === checked.length) {
+        setStatus('Comprobación básica aprobada (' + passed + '/' + checked.length + '). La prueba multiusuario de Realtime sigue pendiente.', false);
+      } else {
+        setStatus('La comprobación básica quedó incompleta (' + passed + '/' + checked.length + '). Revisá los detalles antes de probar con otras cuentas.', true);
+      }
+    } catch (error) {
+      items.push({
+        label: 'Conexión / permisos',
+        ok: false,
+        details: 'Ocurrió un error de red o del SDK. Revisá el dominio del proyecto, la consola del navegador y el estado de Supabase.'
+      });
+      items.push({
+        label: 'Salas en tiempo real con dos cuentas',
+        manual: true,
+        details: 'Pendiente: requiere una prueba manual una vez corregida la conexión.'
+      });
+      renderDiagnostics(items);
+      setStatus('No se completó el diagnóstico. Revisá la configuración de Supabase e intentá nuevamente.', true);
+    } finally {
+      if (trigger && trigger.isConnected) {
+        trigger.disabled = false;
+        trigger.textContent = 'Volver a comprobar';
+      }
+    }
+  }
+
   async function authAction(provider) {
     if (!client) {
       setStatus('Primero configurá la URL y la clave publishable de Supabase.',true);
@@ -643,6 +750,7 @@
 
   async function handleAction(action, button) {
     try {
+      if (action === 'diagnostics') return await runConnectionDiagnostics(button);
       if (action === 'login-google') return await authAction('google');
       if (action === 'login-discord') return await authAction('discord');
       if (action === 'logout') return await authAction('logout');
