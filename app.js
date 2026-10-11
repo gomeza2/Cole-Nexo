@@ -96,7 +96,7 @@ function collectCompanionContext(includeOptionalNotes=false){
   }
   const checkin=readCompanionWeeklyCheckin();
   const context={period:'últimos siete días',days,totalTasksCompleted:days.reduce((n,d)=>n+d.tasksCompleted,0),totalFocusSessions:days.reduce((n,d)=>n+d.focusSessions,0),totalLearningModules:days.reduce((n,d)=>n+d.learningModules,0)};
-  if(includeOptionalNotes)context.optionalWeeklyNotes={aboutFood:checkin.foodNote,physicalFeeling:checkin.physicalNote};
+  if(includeOptionalNotes){const foodNote=(document.querySelector('#companion-food-note')?.value??checkin.foodNote),physicalNote=(document.querySelector('#companion-physical-note')?.value??checkin.physicalNote);context.optionalWeeklyNotes={aboutFood:String(foodNote).trim().slice(0,320),physicalFeeling:String(physicalNote).trim().slice(0,320)}}
   return context;
 }
 function renderSundayRouteNudge(){return '<section class="companion-sunday-nudge"><div><span class="companion-eyebrow">DOMINGO · UN MOMENTO PARA VOS</span><h2>Tu semana no necesita una nota.</h2><p>Si te sirve, mirá lo que viviste y elegí una intención chiquita para lo que viene.</p></div><button type="button" class="btn btn-dark" data-view="ruta">Abrir mi reflejo ↗</button></section>'}
