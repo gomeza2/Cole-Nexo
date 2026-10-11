@@ -77,7 +77,7 @@ async function handleCompanionRequest(request, env, origin, allowed) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: env.OPENAI_MODEL || 'gpt-5-mini',
+        model: env.OPENAI_MODEL || 'gpt-6-luna',
         instructions: COMPANION_SYSTEM_PROMPT,
         input: JSON.stringify({action, context:safeContext}),
         max_output_tokens: action === 'suggestion' ? 120 : 360,
@@ -100,7 +100,27 @@ async function handleCompanionRequest(request, env, origin, allowed) {
       .join('\n')
       .trim();
     if (!text) return reply({error:'AI returned no usable text'}, 502);
-    return reply({action, text:text.slice(0,1400)}, 200);
+
+    // Moderate generated text before displaying it in a youth-facing interface.
+    const moderationResponse = await fetch('https://api.openai.com/v1/moderations', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + env.OPENAI_API_KEY,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({model:'omni-moderation-latest', input:text})
+    });
+    if (!moderationResponse.ok) return reply({error:'Safety review is temporarily unavailable. Use the local reflection for now.'}, 502);
+    const moderationPayload = await moderationResponse.json();
+    const moderationResult = Array.isArray(moderationPayload.results) ? moderationPayload.results[0] : null;
+    if (!moderationResult) return reply({error:'Safety review returned no result.'}, 502);
+    if (moderationResult.flagged) {
+      const safetyText = action === 'suggestion'
+        ? 'Por ahora, dejemos cualquier objetivo en pausa. Si lo que anotaste te preocupa, podés hablarlo con una persona adulta de confianza; no tenés que resolverlo todo ahora.'
+        : 'Gracias por compartir algo de tu semana. Si esto te preocupa o te está pesando, no tenés que manejarlo a solas: hablá con una persona adulta de confianza o un profesional. Podemos ir de a poco, sin juzgarte.';
+      return reply({action, text:safetyText, safetyFallback:true}, 200);
+    }
+    return reply({action, text:text.slice(0,1400), safetyFallback:false}, 200);
   } catch {
     return reply({error:'Unable to reach AI provider'}, 502);
   }
