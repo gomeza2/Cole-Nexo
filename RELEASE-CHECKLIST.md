@@ -48,3 +48,13 @@
 - [ ] Exportar e importar JSON con los nuevos campos habitLog y reminderSettings.
 - [ ] Ejecutar supabase/schema.sql sólo en un proyecto de prueba; verificar RLS con dos usuarios distintos y que ningún usuario lea las filas del otro.
 - [ ] Antes de lanzar auth cloud: probar OAuth, migración local idempotente, logout, cambio de usuario, exportación/borrado y conflictos de sincronización.
+
+
+## Compañero de Ruta — IA y consentimiento
+- [ ] Abrir Mi Ruta sin marcar consentimiento y comprobar que se produce sólo un texto local; verificar que no hay POST al Worker.
+- [ ] Escribir notas opcionales, guardarlas, salir/volver y comprobar que persisten localmente sin llamadas a la API.
+- [ ] Activar consentimiento y pedir reflexión; validar que sólo se envían los datos agregados de siete días y las notas opcionales, sin correo o nombre.
+- [ ] Verificar el POST /api/companion, el secreto OPENAI_API_KEY, respuesta sin caché y alternativa local ante errores.
+- [ ] Probar contexto vacío, notas largas, JSON grande, origen no permitido y respuestas del proveedor 401/429/5xx.
+- [ ] Probar lenguaje alimentario neutro, sin inferencias médicas, y sugerencias opcionales.
+- [ ] Configurar Cloudflare rate limiting para /api/companion y límites de gasto antes del lanzamiento público.
