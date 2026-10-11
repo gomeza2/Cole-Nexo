@@ -597,3 +597,32 @@ body.deep-mode .focus-clock-progress{stroke:#87ffd1}
 @media(prefers-reduced-motion:reduce){.focus-station-card,.focus-clock-progress,.focus-sound-toggle,.focus-sound-option,.focus-sound-panel{transition:none!important;animation:none!important}.focus-audio-status-dot.is-playing{animation:none}}
 body.dark .focus-sound-option.is-playing{background:#26392e;border-color:#6eaf91}
 body.dark .focus-sound-option.is-playing .focus-sound-icon{background:#335642;color:#d6ffe4}
+
+
+/* Micro-interacciones para respuestas de Jugar */
+.game-answer-input{transition:border-color .18s ease,box-shadow .18s ease,background-color .18s ease,transform .18s ease;will-change:transform}
+.game-answer-input.answer-input-correct{border-color:#38f58c!important;outline:1px solid #38f58c;background:#f0fff6!important;box-shadow:0 0 0 3px #39f58b24,0 0 18px #19f87867;animation:game-answer-neon .62s ease-out,game-answer-bounce .52s cubic-bezier(.2,.8,.3,1)}
+.game-answer-input.answer-input-wrong{border-color:#f05259!important;outline:1px solid #f05259;background:#fff4f3!important;box-shadow:0 0 0 3px #f052591f,0 0 13px #f0525938;animation:game-answer-shake .38s cubic-bezier(.36,.07,.19,.97) both}
+.game-answer-feedback{min-height:0;margin-top:0}
+.game-answer-feedback:not(:empty){margin-top:12px}
+.game-inline-feedback{margin:0;padding:11px 12px;border:1px solid #f0525955;border-radius:11px;background:#fff3f2;color:#a62b34;font-size:12px;line-height:1.6;animation:game-feedback-in .2s ease-out}
+.game-answer-result{margin:0!important;animation:game-feedback-in .25s ease-out}
+.game-answer-result-correct{border:1px solid #38d98070;background:linear-gradient(120deg,#f2fff7,#e8fff2);box-shadow:inset 0 0 0 1px #38d98016}
+.game-answer-result-correct>strong{display:inline-block;color:#137943;animation:game-answer-bounce .48s cubic-bezier(.2,.8,.3,1)}
+.quiz-option{transition:transform .16s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease}
+.quiz-option-label{display:block}
+.quiz-option.correct{border-color:#36f58a!important;background:#edfff4!important;color:#146a3c;box-shadow:0 0 0 2px #36f58a22,0 0 18px #36f58a55;animation:game-answer-neon .62s ease-out,game-answer-bounce .5s cubic-bezier(.2,.8,.3,1)}
+.quiz-option.correct .quiz-option-label{animation:game-answer-bounce .5s cubic-bezier(.2,.8,.3,1)}
+.quiz-option.wrong{border-color:#ef535b!important;background:#fff0ef!important;color:#982931;box-shadow:0 0 0 2px #ef535b20,0 0 12px #ef535b30;animation:game-answer-shake .38s cubic-bezier(.36,.07,.19,.97) both}
+body.dark .game-answer-input.answer-input-correct{background:#10281c!important;color:#dffff0}
+body.dark .game-answer-input.answer-input-wrong{background:#30191b!important;color:#ffe5e5}
+body.dark .game-inline-feedback{background:#311c1e;border-color:#814148;color:#ffcdd0}
+body.dark .game-answer-result-correct{background:linear-gradient(120deg,#15271d,#193324);border-color:#3e8d61}
+body.dark .game-answer-result-correct>strong{color:#adf7c7}
+body.dark .quiz-option.correct{background:#12271c!important;color:#c9ffdc}
+body.dark .quiz-option.wrong{background:#341c1e!important;color:#ffd6d7}
+@keyframes game-answer-neon{0%{border-color:#baffd0;box-shadow:0 0 0 0 #38f58a00}22%{border-color:#25ff80;box-shadow:0 0 0 4px #25ff802b,0 0 28px #25ff80a8}47%{border-color:#38f58a;box-shadow:0 0 0 1px #25ff801b,0 0 10px #25ff8040}69%{border-color:#25ff80;box-shadow:0 0 0 4px #25ff8020,0 0 22px #25ff8070}100%{border-color:#38d980;box-shadow:0 0 0 2px #38d98022,0 0 13px #38d98035}}
+@keyframes game-answer-bounce{0%,100%{transform:translateY(0) scale(1)}28%{transform:translateY(-4px) scale(1.012)}52%{transform:translateY(1px) scale(.997)}72%{transform:translateY(-2px) scale(1.005)}}
+@keyframes game-answer-shake{0%,100%{transform:translateX(0)}18%,54%,90%{transform:translateX(-5px)}36%,72%{transform:translateX(5px)}}
+@keyframes game-feedback-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.game-answer-input,.quiz-option,.game-answer-input.answer-input-correct,.game-answer-input.answer-input-wrong,.quiz-option.correct,.quiz-option.wrong,.game-answer-result-correct>strong,.quiz-option.correct .quiz-option-label,.game-inline-feedback,.game-answer-result{animation:none!important;transition:none!important}}
