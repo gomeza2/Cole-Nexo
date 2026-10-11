@@ -1,7 +1,7 @@
 /* NEXO PWA: cache only the static app shell, never API responses or user data. */
 "use strict";
 
-const CACHE_NAME = "nexo-app-shell-v1";
+const CACHE_NAME = "nexo-app-shell-v2";
 const SHELL_ASSETS = [
   "./index.html",
   "./styles.css",
@@ -13,7 +13,9 @@ const SHELL_ASSETS = [
   "./community.js",
   "./pwa.js",
   "./manifest.webmanifest",
-  "./nexo-icon.svg"
+  "./nexo-icon.svg",
+  "./nexo-icon-192.svg",
+  "./nexo-icon-512.svg"
 ];
 const SHELL_URL = new URL("./index.html", self.registration.scope).href;
 const CACHE_URLS = new Set(
