@@ -78,7 +78,7 @@ alter table public.community_blocks enable row level security;
 revoke all on public.community_identities from anon, authenticated;
 revoke all on public.focus_rooms from anon, authenticated;
 -- The client may inspect only non-secret room metadata, and only as an active member.
-grant select (id, host_user_id, room_status) on public.focus_rooms to authenticated;
+grant select (id, room_status) on public.focus_rooms to authenticated;
 revoke all on public.focus_room_members from anon, authenticated;
 revoke all on public.discovery_posts from anon, authenticated;
 revoke all on public.discovery_reports from anon, authenticated;
@@ -125,6 +125,7 @@ begin
 end;
 $$;
 revoke all on function public.ensure_community_identity() from public, anon, authenticated;
+revoke all on function public.nexo_can_broadcast_focus_room(text) from public, anon;
 
 create or replace function public.get_focus_room(p_room_id uuid)
 returns jsonb
@@ -629,6 +630,26 @@ begin
 end;
 $$;
 
+
+create or replace function public.nexo_can_broadcast_focus_room(p_topic text)
+returns boolean
+language sql
+stable
+security definer
+set search_path = ''
+as $
+  select auth.uid() is not null and exists (
+    select 1
+    from public.focus_room_members m
+    join public.focus_rooms r on r.id = m.room_id
+    where m.user_id = (select auth.uid())
+      and r.host_user_id = (select auth.uid())
+      and r.room_status = 'open'
+      and ('nexo-focus:' || m.room_id::text) = p_topic
+      and m.last_seen_at > now() - interval '2 minutes'
+  );
+$;
+
 -- Private Realtime topics: only recent room members may receive presence/broadcast.
 drop policy if exists nexo_focus_private_channel_receive on realtime.messages;
 create policy nexo_focus_private_channel_receive
@@ -659,15 +680,7 @@ create policy nexo_focus_private_channel_send
     or
     (
       extension = 'broadcast'
-      and exists (
-        select 1 from public.focus_room_members m
-        join public.focus_rooms r on r.id = m.room_id
-        where m.user_id = (select auth.uid())
-          and r.host_user_id = (select auth.uid())
-          and r.room_status = 'open'
-          and ('nexo-focus:' || m.room_id::text) = realtime.topic()
-          and m.last_seen_at > now() - interval '2 minutes'
-      )
+      and public.nexo_can_broadcast_focus_room(realtime.topic())
     )
   );
 
@@ -689,6 +702,7 @@ revoke all on function public.block_community_alias(uuid) from public, anon;
 revoke all on function public.get_discovery_moderation_queue(integer) from public, anon;
 revoke all on function public.moderate_discovery_post(uuid, text) from public, anon;
 
+grant execute on function public.nexo_can_broadcast_focus_room(text) to authenticated;
 grant execute on function public.get_focus_room(uuid) to authenticated;
 grant execute on function public.create_focus_room(text, integer) to authenticated;
 grant execute on function public.join_focus_room(text) to authenticated;
