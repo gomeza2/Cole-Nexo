@@ -55,7 +55,7 @@ El esquema inicial está en **supabase/schema.sql**. Crea tablas separadas para 
 ### Conectar OpenAI en el Worker existente
 1. El archivo companion-config.js contiene la URL pública de /api/companion. No contiene secretos.
 2. En Cloudflare, abre Workers & Pages → nexo-news-proxy → Settings → Variables and Secrets y agrega un Secret llamado OPENAI_API_KEY. Usa una clave de la API de OpenAI, no una clave de ChatGPT.
-3. El Worker usa gpt-6-luna por defecto. Si tu proyecto necesita otro modelo compatible, define la variable OPENAI_MODEL.
+3. El Worker usa gpt-6-luna por defecto y revisa la salida con omni-moderation-latest antes de mostrarla. Si tu proyecto necesita otro modelo compatible, define la variable OPENAI_MODEL.
 4. Abre workers/news-worker.js en GitHub, copia el archivo completo, pégalo en Edit Code del Worker reemplazando la versión anterior y pulsa Deploy. El código conserva la ruta de noticias y añade el POST /api/companion.
 5. La clave no se debe incluir en app.js, companion-config.js ni en el repositorio.
 
