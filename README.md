@@ -176,7 +176,7 @@ Para conectar el backend, sigue **PHASE-2-IMPLEMENTATION.md** y ejecuta primero 
 
 ## Fase 3 — PWA e inicio sin conexión
 
-- **Instalación:** `manifest.webmanifest` y el botón «Instalar» ofrecen la opción nativa cuando el navegador la admite, con instrucciones manuales para otros navegadores.
+- **Instalación:** `manifest.webmanifest`, iconos SVG escalables con tamaños declarados 192×192 y 512×512, y el botón «Instalar» ofrecen la opción nativa cuando el navegador la admite, con instrucciones manuales para otros navegadores. Los PNG de respaldo siguen siendo una mejora de compatibilidad pendiente.
 - **Shell local:** `service-worker.js` guarda archivos estáticos de NEXO y vuelve a `index.html` cuando se navega sin conexión. La caché no almacena respuestas de API, tokens ni datos personales.
 - **Interfaz adaptable:** `pwa.js` muestra instrucciones específicas para iOS, Android y escritorio y explica qué partes necesitan internet.
 - **Límite:** la primera visita requiere conexión y HTTPS. El offline no convierte en locales Supabase, OAuth, noticias ni Compañero de Ruta. No se incluyen push notifications ni sincronización cloud offline.
