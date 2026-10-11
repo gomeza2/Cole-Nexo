@@ -302,6 +302,13 @@
       .on('broadcast', {event:'focus-state'}, function (message) {
         const payload = message && message.payload;
         if (!payload || payload.id !== currentRoom?.id) return;
+        if (payload.room_closed) {
+          clearRoomSubscriptions();
+          currentRoom = null;
+          renderHub();
+          setStatus('El anfitrión cerró la sala. Podés crear otra o entrar con un nuevo código.');
+          return;
+        }
         currentRoom = Object.assign({}, currentRoom, payload);
         renderRoomStage();
       })
