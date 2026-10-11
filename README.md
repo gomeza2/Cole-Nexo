@@ -57,3 +57,11 @@ Los datos se guardan en el navegador, no se sincronizan entre dispositivos. No h
 - Botón «Sorpréndeme» que combina una plantilla aleatoria del catálogo con frases predefinidas.
 - Exportación del lienzo como PNG cuando el origen de la imagen permite exportación desde canvas. Algunas plantillas externas pueden bloquearla por restricciones CORS.
 - La búsqueda filtra el catálogo popular recibido de la API; la búsqueda completa del catálogo de Imgflip es una función premium y no se usa aquí.
+
+## Bienestar Integral en Inicio
+
+- Tres mini-tarjetas en el panel principal: contador visual de hasta ocho vasos, consejo/receta diaria y pausa de estiramiento en silla de un minuto.
+- El contador usa `localStorage` y se reinicia al cambiar el día local; no establece una cuota universal de hidratación.
+- Los 30 consejos y recetas viven en `wellbeing-tips.json`; la selección cambia cada 24 horas según el día y se refresca si la pestaña queda abierta.
+- Ilustración SVG animada con respeto por la preferencia `prefers-reduced-motion`.
+- Si no se puede cargar el JSON, se muestra un consejo de respaldo.
