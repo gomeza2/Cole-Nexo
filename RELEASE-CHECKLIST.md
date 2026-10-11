@@ -85,4 +85,4 @@
 - [ ] Probar las instrucciones manuales de iOS Safari y el flujo nativo de instalación en un navegador compatible.
 - [ ] Comprobar teclado, Escape, foco, pantalla de 320–390 px y tema oscuro del panel de instalación.
 - [ ] Revisar Service Worker y consola en Chrome, Firefox, Safari iOS y Chrome Android reales antes de declarar la release validada.
-- [ ] Considerar iconos PNG de 192/512 y `apple-touch-icon` antes de ampliar la distribución; no declarar compatibilidad universal con el icono SVG únicamente.
+- [ ] Verificar en Chrome/Edge que se reconocen los iconos manifest de 192×192 y 512×512; añadir PNG de 192/512 y `apple-touch-icon` para compatibilidad más amplia, especialmente iOS.
