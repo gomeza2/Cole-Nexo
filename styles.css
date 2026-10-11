@@ -323,3 +323,106 @@ body.dark .world-brief-image-mark,body.dark .world-brief-category{background:#f7
 @media(max-width:900px){.world-brief-section{padding:19px}.world-brief-track{grid-auto-columns:calc((100% - 12px)/2)}}
 @media(max-width:600px){.world-brief-section{margin-top:25px;padding:15px;border-radius:17px}.world-brief-heading{align-items:flex-start}.world-brief-heading h2{font-size:24px}.world-brief-heading p:last-child{font-size:11px}.world-brief-controls{gap:5px}.world-brief-arrow{width:33px;height:33px}.world-brief-key-row{flex-direction:column}.world-brief-key-row .btn{width:100%}.world-brief-track{grid-auto-columns:minmax(0,86%);gap:10px;scroll-padding-inline:2px}.world-brief-image-wrap{height:130px}.world-brief-card-body{padding:12px}.world-brief-card h3{font-size:15px}.world-brief-dialog{padding:19px}.world-brief-dialog-footer{align-items:stretch;flex-direction:column}.world-brief-dialog-footer .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){.world-brief-track{scroll-behavior:auto}.world-brief-arrow,.world-brief-card,.world-brief-image,.world-brief-read span{transition:none!important}}
+
+
+/* Modo Profundo — transición global a una interfaz oscura y glassmorphism */
+body,body .rail,body .mobile-top,body main,body .topbar,body .world-card,body .tool-panel,body .daily-panel,body .focus-panel,body .home-wellbeing-card,body .world-brief-section{transition:background-color .48s ease,color .38s ease,border-color .38s ease,box-shadow .38s ease}
+body.deep-mode{color-scheme:dark;--bg:#080b0e;--paper:rgba(17,22,27,.76);--ink:#edf8f4;--muted:#91a19e;--line:rgba(151,255,222,.15);--lime:#8dffcf;--lime-dark:#57d9ab;--lav:#252d37;--peach:#362d2b;--blue:#1d3033;--green:#1b332d;--shadow:0 18px 60px rgba(0,255,190,.055);background:radial-gradient(ellipse at 75% 6%,rgba(0,255,193,.075),transparent 35%),radial-gradient(ellipse at 12% 72%,rgba(92,104,255,.065),transparent 34%),#080b0e;color:var(--ink)}
+body.deep-mode::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(120deg,transparent 30%,rgba(76,255,207,.018),transparent 75%);backdrop-filter:blur(24px)}
+body.deep-mode .rail,body.deep-mode .mobile-top{background:rgba(7,10,13,.82);backdrop-filter:blur(22px);border-color:var(--line)}
+body.deep-mode .brand-mark{background:linear-gradient(135deg,#b4ffe2,#58dcb0);color:#08110f;box-shadow:0 0 25px #64ffca20}
+body.deep-mode .nav-item:hover,body.deep-mode .nav-item.active{background:rgba(105,255,212,.075);color:#c6ffe9}
+body.deep-mode .nav-item.active:before{background:#73ffd0;box-shadow:0 0 12px #56ffd0}
+body.deep-mode .world-card,body.deep-mode .daily-panel,body.deep-mode .focus-panel,body.deep-mode .tool-panel,body.deep-mode .home-wellbeing-card,body.deep-mode .world-brief-section,body.deep-mode .world-brief-card{background:rgba(16,21,26,.72);border-color:var(--line);backdrop-filter:blur(20px);box-shadow:inset 0 1px 0 rgba(226,255,247,.025)}
+body.deep-mode .world-card:hover{border-color:rgba(129,255,218,.4);box-shadow:0 18px 40px #00ffc00b}
+body.deep-mode .world-graphic,body.deep-mode .graphic-create,body.deep-mode .graphic-discover,body.deep-mode .graphic-play,body.deep-mode .graphic-grow,body.deep-mode .graphic-wellbeing,body.deep-mode .graphic-learning{background:linear-gradient(135deg,#182321,#12161d);border:1px solid rgba(135,255,221,.12)}
+body.deep-mode .shape,body.deep-mode .game-tile,body.deep-mode .learn-tile{background:#1a2525;color:#b8ffe4;box-shadow:0 6px 26px #00dba414;border:1px solid #8effd01c}
+body.deep-mode .hero{background:linear-gradient(135deg,#171f20,#11161c);border:1px solid var(--line)}
+body.deep-mode .hero-copy>p,body.deep-mode .hero-foot,body.deep-mode .pill{color:#a6bbb5}
+body.deep-mode .hero h2 em{color:#9fffd8}
+body.deep-mode .art-center{background:#0d1515;color:#d9fff1;border:1px solid #8dffd124;box-shadow:0 20px 55px #00ffc011}
+body.deep-mode .art-sun{background:radial-gradient(circle,#25463f,#11171b 68%)}
+body.deep-mode .orbit{border-color:#81ffd33b}
+body.deep-mode .art-note{background:#171f20;border:1px solid var(--line);color:#d7fff0}
+body.deep-mode .btn-dark{background:#b3ffe1;color:#07100e}
+body.deep-mode .btn-outline,body.deep-mode .btn-quiet{border-color:var(--line);color:var(--ink)}
+body.deep-mode .search-box,body.deep-mode .field input,body.deep-mode .field select,body.deep-mode .field textarea,body.deep-mode .goal-form input{background:rgba(10,14,17,.7);border-color:var(--line);color:var(--ink)}
+body.deep-mode .wellness-note,body.deep-mode .wellness-tip,body.deep-mode .result-box,body.deep-mode .learning-overview,body.deep-mode .learning-footer{background:rgba(16,22,24,.8);border-color:var(--line)}
+body.deep-mode .world-brief-connect,body.deep-mode .world-brief-placeholder{background:rgba(12,17,20,.7);border-color:var(--line)}
+body.deep-mode .world-brief-image-wrap{background:linear-gradient(135deg,#172924,#202033)}
+body.deep-mode .progress-track{background:#1d2928}body.deep-mode .progress-fill{background:#87ffd1}
+body.deep-mode .reflex-expand-toggle{background:linear-gradient(110deg,#121c1a,#171922);color:var(--ink)}
+body.deep-mode .reflex-expand-icon{background:#101817;color:#c5ffe9;border-color:var(--line)}body.deep-mode .reflex-score-row{background:#111819}
+body.deep-mode .dialog{background:#101519;color:var(--ink);border-color:var(--line)}body.deep-mode .site-footer{color:var(--muted)}
+.deep-mode-switch{display:inline-flex;align-items:center;justify-content:center;gap:8px;flex-shrink:0;border:1px solid var(--line);border-radius:999px;padding:7px 10px;background:rgba(128,145,139,.06);color:var(--muted);font:500 9px 'DM Mono',monospace;letter-spacing:.8px;transition:background .25s,border-color .25s,color .25s}
+.deep-mode-switch:hover{border-color:#7efbd0;color:var(--ink)}
+.deep-mode-switch-track{position:relative;display:block;width:32px;height:18px;border-radius:99px;background:#737d79;box-shadow:inset 0 0 0 1px #ffffff1a;transition:background .25s}
+.deep-mode-switch-track i{position:absolute;left:3px;top:3px;width:12px;height:12px;border-radius:50%;background:#f5f8f6;box-shadow:0 1px 4px #0003;transition:transform .25s cubic-bezier(.2,.8,.2,1),background .25s}
+.deep-mode-switch.is-on{background:rgba(105,255,212,.08);border-color:#83ffd2;color:#baffdf}
+.deep-mode-switch.is-on .deep-mode-switch-track{background:#55d8aa}
+.deep-mode-switch.is-on .deep-mode-switch-track i{transform:translateX(14px);background:#06130f;box-shadow:0 0 9px #e0fff2}
+.deep-mode-switch:focus-visible{outline:2px solid #8fffd5;outline-offset:4px}
+.rail-bottom .deep-mode-switch{width:76px;flex-direction:column;gap:4px;border-radius:13px;padding:8px 5px;font-size:8px}
+.rail-bottom .deep-mode-switch-track{width:33px}
+.mobile-top-actions{display:flex;align-items:center;gap:7px}
+.mobile-top-actions .deep-mode-switch{padding:5px 7px;font-size:8px}
+.mobile-top-actions .deep-mode-switch-track{width:29px;height:17px}
+.mobile-top-actions .deep-mode-switch-track i{width:11px;height:11px}
+.mobile-top-actions .deep-mode-switch.is-on .deep-mode-switch-track i{transform:translateX(12px)}
+/* Descompresor Neural */
+.neural-page{padding-bottom:20px}
+.neural-page-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;margin:12px 0 20px}
+.neural-page-heading h2{font:800 clamp(28px,3vw,39px)/1.08 Manrope,sans-serif;letter-spacing:-1.5px;margin:0}
+.neural-page-heading p:last-child{max-width:550px;margin:9px 0 0;font-size:12px;line-height:1.65;color:var(--muted)}
+.neural-deep-toggle{padding:10px 13px}
+.neural-lab{position:relative;isolation:isolate;min-height:min(760px,78vh);min-height:max(620px,min(760px,78vh));overflow:hidden;border-radius:25px;border:1px solid rgba(151,255,221,.18);background:radial-gradient(ellipse at 50% 45%,#142523 0%,#0b1114 40%,#07090c 100%);color:#eafff6;box-shadow:0 28px 90px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.035)}
+.neural-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:-1}
+.neural-fallback-canvas{display:none}
+.neural-vignette{position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 8%,rgba(2,5,8,.25) 56%,rgba(2,4,7,.88) 100%),linear-gradient(90deg,rgba(4,8,10,.68),rgba(4,8,10,.06) 70%);backdrop-filter:saturate(108%)}
+.neural-lab-content{position:relative;z-index:1;display:flex;flex-direction:column;width:min(720px,100%);min-height:inherit;margin:0 auto;padding:clamp(23px,4.5vw,54px) clamp(18px,4vw,42px) 21px}
+.neural-overline{display:flex;align-items:center;gap:9px;font:500 9px 'DM Mono',monospace;letter-spacing:1.5px;color:#95afa8}
+.neural-live-dot{width:6px;height:6px;border-radius:50%;background:#7dffd0;box-shadow:0 0 15px #6effc4;animation:neural-breathe 2.3s ease-in-out infinite}
+.neural-overline-separator{opacity:.3}
+.neural-intro{margin:clamp(28px,5vh,48px) 0 23px}
+.neural-index{font:10px 'DM Mono',monospace;letter-spacing:1.4px;color:#7fb9a5;margin-bottom:12px}
+.neural-intro h3{font:800 clamp(35px,5.4vw,57px)/1.02 Manrope,sans-serif;letter-spacing:-2.7px;margin:0 0 13px;color:#f3fff9}
+.neural-intro h3 em{font-style:normal;color:#9dffda}
+.neural-intro>p:last-child{max-width:455px;margin:0;color:#a2b9b1;font-size:12px;line-height:1.7}
+.neural-form{width:100%;margin-top:auto;padding:18px 18px 15px;border:1px solid rgba(155,255,222,.2);border-radius:17px;background:rgba(7,13,15,.69);box-shadow:0 16px 50px rgba(0,0,0,.16),inset 0 1px 0 rgba(240,255,250,.025);backdrop-filter:blur(24px)}
+.neural-field-label{display:flex;align-items:center;justify-content:space-between;gap:10px;font:500 9px 'DM Mono',monospace;letter-spacing:1.25px;color:#b7d5ca}
+.neural-field-meta{font-size:8px;color:#678a7c}
+.neural-form textarea{display:block;width:100%;min-height:150px;max-height:42vh;resize:vertical;margin:12px 0 0;border:0;border-radius:9px;outline:0;background:transparent;color:#f2fff9;caret-color:#87ffcd;font:400 15px/1.85 'DM Mono',monospace;letter-spacing:.05px;padding:5px 0 12px;white-space:pre-wrap;overflow-wrap:anywhere}
+.neural-form textarea::placeholder{color:#71867e;opacity:1}
+.neural-form textarea:focus-visible{outline:1px solid #7dfbd044;outline-offset:6px}
+.neural-form textarea:disabled{opacity:.35}
+.neural-input-bottom{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap;border-top:1px solid rgba(155,255,222,.11);padding-top:11px;font:9px 'DM Mono',monospace;color:#73968a}
+.neural-signal{color:#9effd5;letter-spacing:1px}
+.neural-actions{display:flex;align-items:center;gap:12px;margin-top:15px}
+.neural-release-btn{min-width:154px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 19px;border:1px solid #91ffda;border-radius:11px;background:#abffde;color:#07110d;font:700 12px 'DM Sans',sans-serif;box-shadow:0 0 25px rgba(99,255,204,.06);transition:transform .2s,box-shadow .25s,background .2s,opacity .2s}
+.neural-release-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 7px 30px rgba(88,255,202,.22);background:#cbffe9}
+.neural-release-btn:disabled{opacity:.35;cursor:not-allowed;box-shadow:none}
+.neural-release-mark{font-size:17px}
+.neural-clear-btn{border:0;background:transparent;color:#a2b9b1;padding:10px 11px;font-size:11px;transition:color .2s}
+.neural-clear-btn:hover:not(:disabled){color:#edfff7}
+.neural-clear-btn:disabled{opacity:.3;cursor:not-allowed}
+.neural-privacy-line{margin:12px 0 0;color:#6e8980;font-size:10px;line-height:1.6}
+.neural-lab-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;color:#638074;font:8px 'DM Mono',monospace;letter-spacing:1.1px}
+.neural-coordinate{position:absolute;color:#628478;font:8px 'DM Mono',monospace;letter-spacing:1.2px;writing-mode:vertical-rl;opacity:.6;pointer-events:none}
+.neural-coordinate-a{top:50px;right:20px}
+.neural-coordinate-b{bottom:50px;left:18px;transform:rotate(180deg)}
+.neural-aftercare{display:flex;align-items:flex-start;gap:12px;max-width:760px;margin:17px auto 0;padding:17px 19px;border:1px solid var(--line);border-radius:15px;background:rgba(128,145,139,.025)}
+.neural-aftercare-mark{display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px;border-radius:9px;background:rgba(108,255,204,.08);color:#52c89d}
+.neural-aftercare p{margin:2px 0 0;color:var(--muted);font-size:11px;line-height:1.75}
+.world-neural{position:relative}
+.graphic-neural{background:linear-gradient(135deg,#111b1a,#222537);border:1px solid #7fffce2a}
+.neural-card-orbit{position:absolute;left:50%;top:46%;border:1px solid #83ffce77;border-radius:50%;transform:translate(-50%,-50%) rotate(-24deg)}
+.orbit-card-one{width:115px;height:65px}
+.orbit-card-two{width:83px;height:120px;transform:translate(-50%,-50%) rotate(31deg);border-color:#8482ff86}
+.neural-card-core{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);display:grid;place-items:center;width:48px;height:48px;border-radius:16px;background:#9affd7;color:#0a1712;font:800 36px Manrope,sans-serif;box-shadow:0 0 34px #6dffd125}
+.neural-card-label{position:absolute;left:12px;bottom:11px;color:#8ab8a8;font:8px 'DM Mono',monospace;letter-spacing:1px}
+body.deep-mode .world-neural .world-title{color:#d8fff1}
+body.deep-mode .graphic-neural{background:linear-gradient(135deg,#0b1113,#11131c)}
+@keyframes neural-breathe{0%,100%{opacity:.6;box-shadow:0 0 7px #6effc4}50%{opacity:1;box-shadow:0 0 16px #6effc4}}
+@media(max-width:900px){.neural-lab{min-height:700px}.neural-coordinate{display:none}}
+@media(max-width:700px){.rail-bottom .deep-mode-switch{display:none}.mobile-top{gap:8px}.mobile-top-actions{gap:5px}.mobile-top-actions .deep-mode-switch-copy{display:none}.neural-page-heading{align-items:flex-start;flex-direction:column;gap:12px}.neural-deep-toggle{align-self:flex-start}.neural-lab{min-height:710px;min-height:max(690px,75svh);border-radius:19px}.neural-lab-content{padding:24px 15px 17px}.neural-intro{margin:35px 0 20px}.neural-intro h3{font-size:clamp(34px,10vw,46px);letter-spacing:-1.8px}.neural-intro>p:last-child{font-size:11px}.neural-form{padding:15px 13px 13px}.neural-form textarea{min-height:125px;font-size:13px}.neural-field-meta{font-size:7px}.neural-lab-bottom{font-size:7px}.neural-coordinate{display:none}.neural-aftercare{padding:14px}.neural-release-btn{flex:1}.neural-actions{gap:6px}.world-neural .world-graphic{height:112px}}
+@media(prefers-reduced-motion:reduce){body,body .rail,body .mobile-top,body main,body .topbar,body .world-card,body .tool-panel,body .daily-panel,body .focus-panel,body .home-wellbeing-card,body .world-brief-section,.deep-mode-switch,.deep-mode-switch-track,.deep-mode-switch-track i,.neural-release-btn,.neural-clear-btn{transition:none!important}.neural-live-dot{animation:none!important}.world-neural .neural-card-orbit{animation:none!important}}
