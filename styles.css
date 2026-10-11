@@ -661,3 +661,41 @@ body.deep-mode::before,body.deep-mode .rail,body.deep-mode .mobile-top,body.deep
  .settings-grid{grid-template-columns:minmax(0,1fr);gap:12px}.settings-panel{padding:18px}.settings-stats strong{font-size:19px}.settings-stats span{font-size:9px}.tour-tooltip h2{font-size:20px}.tour-actions{align-items:stretch}.tour-actions .btn{flex:1;min-width:0}
 }
 @media(prefers-reduced-motion:reduce){.mobile-menu-chevron,.tour-highlight,.tour-tooltip{transition:none!important;animation:none!important}.neural-canvas{transform:none}}
+
+
+/* Phase 1 — compassionate habit rhythm and private self-observation */
+.gentle-rhythm-panel{margin:0 0 22px;padding:24px 26px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.gentle-rhythm-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.gentle-rhythm-head h3,.mood-productivity-panel h3{margin:5px 0 8px;font-family:Manrope,sans-serif;font-size:clamp(19px,2vw,24px);letter-spacing:-.04em}
+.gentle-rhythm-head .muted,.mood-productivity-panel>.muted{max-width:580px;line-height:1.65}
+.rhythm-score{min-width:105px;padding:12px 14px;border:1px solid var(--line);border-radius:16px;background:var(--bg);text-align:center}
+.rhythm-score strong{display:block;font-family:Manrope,sans-serif;font-size:27px;letter-spacing:-.05em}
+.rhythm-score strong span{font-size:14px;color:var(--muted)}
+.rhythm-score small{font-size:10px;color:var(--muted);display:block;margin-top:2px}
+.gentle-week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px;margin-top:17px}
+.gentle-day{display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 3px 10px;border:1px solid var(--line);border-radius:13px;background:var(--bg);min-width:0}
+.gentle-day>span{font-size:11px;text-transform:capitalize;color:var(--muted)}
+.gentle-day>i{display:flex;align-items:center;justify-content:center;width:29px;height:29px;border-radius:50%;font-size:14px;font-style:normal;border:1px dashed var(--line);color:var(--muted)}
+.gentle-day.has-activity>i{background:var(--lime);border-style:solid;border-color:transparent;color:#26311b;font-weight:800}
+.gentle-day>small{font-size:10px;color:var(--muted);text-align:center}
+.gentle-rhythm-note,.mp-footnote{font-size:12px!important;line-height:1.65!important;margin:15px 0 0!important;color:var(--muted)}
+.mood-productivity-panel{grid-column:1/-1}
+.mood-productivity-legend{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0 12px;font-size:11px;color:var(--muted)}
+.mood-productivity-legend>span{display:flex;align-items:center;gap:7px}
+.mood-productivity-legend i{width:9px;height:9px;display:inline-block;border-radius:3px}
+.legend-mood{background:#a6a0df}.legend-activity{background:#8fc5ad}
+.mood-productivity-chart{display:grid;gap:9px}
+.mp-row{display:grid;grid-template-columns:78px minmax(0,1fr);gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line)}
+.mp-date{display:flex;flex-direction:column;gap:3px}
+.mp-date strong{font-size:12px;text-transform:capitalize}
+.mp-date small{font-size:10px;color:var(--muted)}
+.mp-bars{display:grid;gap:8px}
+.mp-bar-line{display:grid;grid-template-columns:62px minmax(45px,1fr) 36px;gap:9px;align-items:center;font-size:10px;color:var(--muted)}
+.mp-meter{height:9px;border-radius:999px;background:var(--bg);overflow:hidden;border:1px solid var(--line)}
+.mp-meter i{display:block;height:100%;border-radius:999px;min-width:0;transition:width .25s ease}
+.mp-mood-fill{background:#a6a0df}.mp-activity-fill{background:#8fc5ad}
+.mp-bar-line small{text-align:right;font-variant-numeric:tabular-nums}
+.reminders-panel .settings-note{margin:10px 0}
+.reminders-panel .field{margin:15px 0 8px}
+@media(max-width:600px){.gentle-rhythm-panel{padding:18px 14px}.gentle-rhythm-head{gap:12px}.rhythm-score{min-width:88px;padding:10px 8px}.gentle-week{gap:5px}.gentle-day{padding:10px 1px}.gentle-day>small{font-size:9px}.mp-row{grid-template-columns:55px minmax(0,1fr);gap:7px}.mp-bar-line{grid-template-columns:50px minmax(35px,1fr) 27px;gap:5px}.mood-productivity-legend{gap:12px}}
+@media(prefers-reduced-motion:reduce){.mp-meter i{transition:none}}
