@@ -77,6 +77,8 @@ alter table public.community_blocks enable row level security;
 -- validate access and return only fields intended for the current audience.
 revoke all on public.community_identities from anon, authenticated;
 revoke all on public.focus_rooms from anon, authenticated;
+-- The client may inspect only non-secret room metadata, and only as an active member.
+grant select (id, host_user_id, room_status) on public.focus_rooms to authenticated;
 revoke all on public.focus_room_members from anon, authenticated;
 revoke all on public.discovery_posts from anon, authenticated;
 revoke all on public.discovery_reports from anon, authenticated;
@@ -89,6 +91,18 @@ drop policy if exists nexo_focus_member_select_own on public.focus_room_members;
 create policy nexo_focus_member_select_own
   on public.focus_room_members for select to authenticated
   using (user_id = (select auth.uid()) and last_seen_at > now() - interval '2 minutes');
+
+drop policy if exists nexo_focus_room_member_select on public.focus_rooms;
+create policy nexo_focus_room_member_select
+  on public.focus_rooms for select to authenticated
+  using (
+    exists (
+      select 1 from public.focus_room_members m
+      where m.room_id = focus_rooms.id
+        and m.user_id = (select auth.uid())
+        and m.last_seen_at > now() - interval '2 minutes'
+    )
+  );
 
 create or replace function public.ensure_community_identity()
 returns uuid
@@ -164,6 +178,7 @@ as $$
 declare
   v_room_id uuid;
   v_code text;
+  v_capacity integer;
   v_attempt integer := 0;
   v_duration integer := coalesce(p_duration_minutes, 25);
   v_title text := trim(coalesce(p_title, ''));
@@ -217,9 +232,10 @@ begin
     raise exception 'Enter the six-character room code' using errcode = '22023';
   end if;
 
-  select r.id, r.host_user_id into v_room_id, v_host
+  select r.id, r.host_user_id, r.max_participants into v_room_id, v_host, v_capacity
   from public.focus_rooms r
-  where r.join_code = upper(trim(p_join_code)) and r.room_status = 'open';
+  where r.join_code = upper(trim(p_join_code)) and r.room_status = 'open'
+  for update;
   if v_room_id is null then
     raise exception 'Room not found or closed' using errcode = 'P0002';
   end if;
@@ -241,7 +257,7 @@ begin
     where m.room_id = v_room_id and m.user_id = (select auth.uid())
       and m.last_seen_at > now() - interval '2 minutes'
   ) then
-    if v_count >= 12 then
+    if v_count >= v_capacity then
       raise exception 'This room is full. Try another one.' using errcode = '54000';
     end if;
     insert into public.focus_room_members(room_id, user_id, joined_at, last_seen_at)
