@@ -91,3 +91,12 @@ Los datos se guardan en el navegador, no se sincronizan entre dispositivos. No h
 - El campo incluye fallback animado con Canvas 2D si WebGL no está disponible, adaptación móvil, pausa cuando la pestaña no está visible y movimiento reducido cuando el sistema lo solicita.
 - El texto de `#neural-dump` es efímero: no se manda a ninguna API, no se copia a `localStorage`, al estado exportable ni a copias de seguridad. «Soltar», «Vaciar» y salir de la sección reemplazan el campo por uno vacío para descartar su contenido y su historial de edición.
 - No hay límite de caracteres impuesto por la aplicación. La representación visual tiene un máximo de partículas para mantener el rendimiento.
+
+
+## Descubrir — mazo de curiosidades con Swipe
+
+- Reemplaza la lista estática por un mazo de tarjetas superpuestas, con fotografía de fondo por curiosidad, categoría, texto, fuente y enlace para verificar.
+- Deslizá hacia la derecha para guardar el dato en Favoritos; hacia la izquierda para descartarlo del recorrido del día. También hay controles visibles para guardar/descartar y atajos de teclado con flechas.
+- El contador «Datos aprendidos hoy» registra una sola vez cada dato por día local, independientemente de guardarlo o descartarlo; el avance diario se guarda aparte para reiniciar al cambiar la fecha.
+- Usa Interact.js 1.10.28 desde jsDelivr para drag con inercia, con fallback a Pointer Events si el CDN o la librería no están disponibles.
+- Las curiosidades y fuentes continúan siendo parte de la colección local; las imágenes de fondo se cargan desde NASA, National Geographic y Unsplash, por lo que requieren conexión a Internet.
