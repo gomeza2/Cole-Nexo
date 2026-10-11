@@ -521,4 +521,4 @@ function startOnboarding(force=false){if(!force&&readLocal(ONBOARDING_KEY)===JSO
 function maybeStartOnboarding(){if(readLocal(ONBOARDING_KEY)===JSON.stringify('done'))return;window.setTimeout(()=>startOnboarding(false),550)}
 
 function initializeHome(){const html=document.querySelector('#app-view').innerHTML;viewRoot.innerHTML=html;document.querySelector('#daily-text').textContent=prompts[Math.floor(Math.random()*prompts.length)];updateStats();setTheme()}
-initializeHome();setupWorldBrief();initializeResilientStorage();maybeStartOnboarding();
+removeLocal('nexo-world-brief-gnews-key-v1');initializeHome();setupWorldBrief();initializeResilientStorage();maybeStartOnboarding();
