@@ -108,3 +108,11 @@ Los datos se guardan en el navegador, no se sincronizan entre dispositivos. No h
 - El indicador SVG circular se vacía según el tiempo restante y el panel de la estación se oscurece sutilmente cuando el temporizador está en marcha.
 - Panel lateral plegable con tres paisajes sonoros generados localmente por Web Audio: lluvia urbana, ambiente suave de cafetería y ruido blanco. No requiere descargar archivos de audio ni conectarse a servicios externos; el sonido empieza únicamente después de la acción explícita del usuario.
 - Reiniciar o cambiar la duración detiene el audio. Cambiar de sección pausa el reloj y detiene el sonido para evitar que quede reproduciéndose a escondidas; al volver, se conserva el tiempo restante.
+
+
+## Micro-interacciones de respuestas en Jugar
+
+- Respuesta correcta en «La palabra escondida»: input con borde verde neón pulsante, brillo suave y pequeño rebote; se deshabilita durante la confirmación y luego deja paso al resultado.
+- Respuesta incorrecta: borde rojo, sacudida horizontal y mensaje inline accesible que permite volver a intentar sin alertas del navegador.
+- En Trivia, la opción correcta usa el pulso verde y rebote, y la opción elegida incorrecta utiliza la sacudida roja.
+- Animaciones reducidas si el sistema operativo solicita `prefers-reduced-motion`; los puntos y récords existentes se mantienen.
