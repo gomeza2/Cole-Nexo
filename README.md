@@ -100,3 +100,11 @@ Los datos se guardan en el navegador, no se sincronizan entre dispositivos. No h
 - El contador «Datos aprendidos hoy» registra una sola vez cada dato por día local, independientemente de guardarlo o descartarlo; el avance diario se guarda aparte para reiniciar al cambiar la fecha.
 - Usa Interact.js 1.10.28 desde jsDelivr para drag con inercia, con fallback a Pointer Events si el CDN o la librería no están disponibles.
 - Las curiosidades y fuentes continúan siendo parte de la colección local; las imágenes de fondo se cargan desde NASA, National Geographic y Unsplash, por lo que requieren conexión a Internet.
+
+
+## Estación de Enfoque
+
+- El temporizador de Progresar mantiene bloques de 5, 15, 25 o 45 minutos, pausa/continuación, reinicio y suma 5 puntos al completar una sesión.
+- El indicador SVG circular se vacía según el tiempo restante y el panel de la estación se oscurece sutilmente cuando el temporizador está en marcha.
+- Panel lateral plegable con tres paisajes sonoros generados localmente por Web Audio: lluvia urbana, ambiente suave de cafetería y ruido blanco. No requiere descargar archivos de audio ni conectarse a servicios externos; el sonido empieza únicamente después de la acción explícita del usuario.
+- Reiniciar o cambiar la duración detiene el audio. Cambiar de sección pausa el reloj y detiene el sonido para evitar que quede reproduciéndose a escondidas; al volver, se conserva el tiempo restante.
