@@ -74,15 +74,13 @@ Los datos se guardan en el navegador, no se sincronizan entre dispositivos. No h
 - Confeti y vibración opcional al conseguir un nuevo récord; animaciones reducidas cuando el dispositivo lo solicita.
 
 
-## Resumen del Mundo — noticias en tres tarjetas
+## Resumen del Mundo — modo demo y noticias reales opcionales
 
-- Carrusel horizontal de exactamente tres titulares de GNews, con imagen, categoría y título limitado a 60 caracteres.
-- Consulta titulares de Tecnología, Ciencia y Cultura (la categoría «Cultura» usa la categoría «Entertainment» de GNews), en español y con preferencia por fuentes de Argentina.
-- Botón «Leer resumen» abre un diálogo accesible con un único párrafo corto y enlace al medio original.
-- Requiere una clave gratuita de GNews, ingresada desde la interfaz. La clave se guarda en el almacenamiento local del navegador del usuario y no está escrita en los archivos públicos del repositorio.
-- GNews documenta un límite y una demora de actualización para su plan gratuito; el carrusel se actualiza al enviar una nueva consulta. El componente adapta el número de tarjetas visibles a pantallas grandes, tabletas y móviles, con desplazamiento táctil y respeto por movimiento reducido.
-- Documentación de API: https://docs.gnews.io/endpoints/top-headlines-endpoint
-
+- El carrusel muestra automáticamente tres tarjetas de demostración sin pedir una clave en el navegador. Cada tarjeta se identifica como **DEMO · EJEMPLO** y su lectura explica que no es una noticia real.
+- Hay varias selecciones locales que pueden recorrerse con las flechas; esto deja visible la experiencia incluso sin conexión o cuando una API está caída.
+- Para activar titulares reales, usá el proxy opcional descrito en «Noticias reales opcionales» al final de este README. La clave se guarda como secreto del servidor de Cloudflare, nunca en el JavaScript público.
+- Las noticias reales pueden estar sujetas a cuotas y demoras del proveedor. Si la conexión falla, vuelve la demo claramente identificada.
+- Documentación del proveedor: https://docs.gnews.io/endpoints/top-headlines-endpoint
 
 ## Modo Profundo + Descompresor Neural
 
