@@ -116,3 +116,19 @@ Los datos se guardan en el navegador, no se sincronizan entre dispositivos. No h
 - Respuesta incorrecta: borde rojo, sacudida horizontal y mensaje inline accesible que permite volver a intentar sin alertas del navegador.
 - En Trivia, la opción correcta usa el pulso verde y rebote, y la opción elegida incorrecta utiliza la sacudida roja.
 - Animaciones reducidas si el sistema operativo solicita `prefers-reduced-motion`; los puntos y récords existentes se mantienen.
+
+
+## Pulido de Release Candidate — versión 1.0
+
+- Persistencia centralizada en localStorage, copia auxiliar e IndexedDB opcional. NEXO solicita almacenamiento persistente, aunque no puede impedir que se borren manualmente todos los datos del sitio.
+- Nueva sección **Ajustes** para exportar/importar JSON. Incluye estado principal y registros auxiliares; no incluye el texto efímero del Descompresor Neural.
+- Resumen del Mundo funciona sin clave gracias a tarjetas locales DEMO identificadas como ejemplos, no noticias reales. Un proxy opcional está en `workers/news-worker.js`; la API key va como secreto de Cloudflare, nunca en el cliente.
+- Tour inicial de tres pasos con opción de repetir desde Ajustes. Menú hamburguesa móvil y acceso rápido a Ajustes.
+- El Descompresor Neural limita el render a 30 FPS en móvil, usa un cuadro estático con movimiento reducido y no dibuja fuera de la vista.
+
+### Noticias reales opcionales
+1. Instalá Wrangler y autenticá Cloudflare.
+2. Ejecutá `wrangler secret put GNEWS_API_KEY`; pegá la clave en la terminal, nunca en GitHub.
+3. Ejecutá `wrangler deploy` desde la raíz del repositorio.
+4. Configurá `window.NEXO_NEWS_ENDPOINT` en `news-config.js` con la URL HTTPS final del Worker.
+5. Ajustá `ALLOWED_ORIGIN` en `wrangler.toml` si el sitio usa otro dominio. Si falla el servicio, vuelven las tarjetas DEMO.
