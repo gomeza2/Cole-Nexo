@@ -165,3 +165,10 @@ Los datos se guardan en el navegador, no se sincronizan entre dispositivos. No h
 - La interfaz avisa que las notas opcionales se enviarán al proveedor de IA sólo con consentimiento explícito. No prometas confidencialidad absoluta ni anonimato perfecto.
 - Revisa el aviso de privacidad, el consentimiento apropiado para la edad y los requisitos legales del mercado antes de usar datos de bienestar de menores.
 
+
+
+## Fase 2 — Comunidad segura y Salas de Enfoque
+
+La pantalla **Comunidad** añade un temporizador de sala con código, presencia y control del anfitrión, además de un muro seudónimo para compartir descubrimientos. Las publicaciones quedan pendientes hasta aprobación humana; se puede reportar contenido y ocultar un alias. No hay chat, cámara ni micrófono. En modo de demo aparecen ejemplos rotulados como tales.
+
+Para conectar el backend, sigue **PHASE-2-IMPLEMENTATION.md** y ejecuta primero **supabase/schema.sql**, luego **supabase/phase2-community.sql**. La app requiere URL de Supabase, publishable key y OAuth configurados en **community-config.js**; sin esos pasos funciona en modo local.
