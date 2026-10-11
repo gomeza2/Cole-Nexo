@@ -83,7 +83,7 @@ expected_policies(schemaname, tablename, policyname) as (
     ('public','learning_progress','learning_progress_own'),
     ('public','user_preferences','user_preferences_own'),
     ('public','data_migrations','data_migrations_own'),
-    ('public','community_identities','nexo_focus_member_select_own'),
+    ('public','focus_room_members','nexo_focus_member_select_own'),
     ('public','focus_rooms','nexo_focus_room_member_select'),
     ('realtime','messages','nexo_focus_private_channel_receive'),
     ('realtime','messages','nexo_focus_private_channel_send')
