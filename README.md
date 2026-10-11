@@ -82,3 +82,12 @@ Los datos se guardan en el navegador, no se sincronizan entre dispositivos. No h
 - Requiere una clave gratuita de GNews, ingresada desde la interfaz. La clave se guarda en el almacenamiento local del navegador del usuario y no está escrita en los archivos públicos del repositorio.
 - GNews documenta un límite y una demora de actualización para su plan gratuito; el carrusel se actualiza al enviar una nueva consulta. El componente adapta el número de tarjetas visibles a pantallas grandes, tabletas y móviles, con desplazamiento táctil y respeto por movimiento reducido.
 - Documentación de API: https://docs.gnews.io/endpoints/top-headlines-endpoint
+
+
+## Modo Profundo + Descompresor Neural
+
+- Interruptor global de Modo Profundo con cambio visual glassmorphism: grafito, negro y acentos menta/neón sutiles. El estado visual es de sesión y no cambia las preferencias ni el contenido guardado.
+- El Descompresor Neural usa WebGL nativo (sin Three.js ni paquetes adicionales) para dibujar una nube de hasta 2.200 puntos GPU con shaders de movimiento 3D. La densidad visible aumenta con la extensión del texto y la energía con la velocidad de escritura; al pulsar «Soltar», los puntos convergen en una esfera simétrica y se desvanecen.
+- El campo incluye fallback animado con Canvas 2D si WebGL no está disponible, adaptación móvil, pausa cuando la pestaña no está visible y movimiento reducido cuando el sistema lo solicita.
+- El texto de `#neural-dump` es efímero: no se manda a ninguna API, no se copia a `localStorage`, al estado exportable ni a copias de seguridad. «Soltar», «Vaciar» y salir de la sección reemplazan el campo por uno vacío para descartar su contenido y su historial de edición.
+- No hay límite de caracteres impuesto por la aplicación. La representación visual tiene un máximo de partículas para mantener el rendimiento.
