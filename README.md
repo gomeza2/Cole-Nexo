@@ -181,3 +181,10 @@ Para conectar el backend, sigue **PHASE-2-IMPLEMENTATION.md** y ejecuta primero 
 - **Interfaz adaptable:** `pwa.js` muestra instrucciones específicas para iOS, Android y escritorio y explica qué partes necesitan internet.
 - **Límite:** la primera visita requiere conexión y HTTPS. El offline no convierte en locales Supabase, OAuth, noticias ni Compañero de Ruta. No se incluyen push notifications ni sincronización cloud offline.
 - **Guía y pruebas:** ver `PHASE-3-IMPLEMENTATION.md` y la sección PWA del `RELEASE-CHECKLIST.md`.
+
+
+## Fase 4 — conexión de Supabase y pruebas de Comunidad
+
+- La pantalla Comunidad incluye **Comprobar conexión** una vez iniciada la sesión. Valida la sesión con el servidor y prueba la RPC `get_discovery_wall`; los resultados explican si hay que revisar la migración SQL.
+- El diagnóstico en el navegador no demuestra que todas las políticas estén bien ni que Realtime funcione entre cuentas. Ejecutá `supabase/phase4-verify.sql` en SQL Editor después de las fases 1 y 2, y seguí `PHASE-4-IMPLEMENTATION.md`.
+- La conexión real sigue dependiendo de un proyecto Supabase, la URL HTTPS, una publishable key, OAuth/redirects, políticas Realtime privadas y pruebas con dos cuentas distintas. Nunca uses `service_role` en el navegador.
