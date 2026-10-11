@@ -65,3 +65,7 @@ El esquema inicial está en **supabase/schema.sql**. Crea tablas separadas para 
 - La interfaz avisa que las notas opcionales se enviarán al proveedor de IA sólo con consentimiento explícito. No prometas confidencialidad absoluta ni anonimato perfecto.
 - Revisa el aviso de privacidad, el consentimiento apropiado para la edad y los requisitos legales del mercado antes de usar datos de bienestar de menores.
 
+
+
+## Siguiente etapa
+La siguiente implementación está en **PHASE-2-IMPLEMENTATION.md** y la migración **supabase/phase2-community.sql**. La interfaz de Comunidad funciona como demo hasta que se conecte un proyecto Supabase, se configure OAuth y se publique el SQL.
