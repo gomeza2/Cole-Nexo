@@ -65,3 +65,10 @@ Los datos se guardan en el navegador, no se sincronizan entre dispositivos. No h
 - Los 30 consejos y recetas viven en `wellbeing-tips.json`; la selección cambia cada 24 horas según el día y se refresca si la pestaña queda abierta.
 - Ilustración SVG animada con respeto por la preferencia `prefers-reduced-motion`.
 - Si no se puede cargar el JSON, se muestra un consejo de respaldo.
+
+## Reflejos Ninja
+
+- Minijuego expandible en la sección Jugar: el círculo pulsa en gris y cambia a verde tras una espera aleatoria de 1,5 a 6 segundos.
+- Tocar antes de tiempo muestra «¡Demasiado rápido!»; al reaccionar tras el verde se mide el tiempo en milisegundos.
+- Tabla Top 3 local ordenada de menor a mayor, guardada en `localStorage`.
+- Confeti y vibración opcional al conseguir un nuevo récord; animaciones reducidas cuando el dispositivo lo solicita.
