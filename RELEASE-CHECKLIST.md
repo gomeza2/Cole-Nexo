@@ -86,3 +86,14 @@
 - [ ] Comprobar teclado, Escape, foco, pantalla de 320–390 px y tema oscuro del panel de instalación.
 - [ ] Revisar Service Worker y consola en Chrome, Firefox, Safari iOS y Chrome Android reales antes de declarar la release validada.
 - [ ] Verificar en Chrome/Edge que se reconocen los iconos manifest de 192×192 y 512×512; añadir PNG de 192/512 y `apple-touch-icon` para compatibilidad más amplia, especialmente iOS.
+
+
+## Fase 4 — conexión y pruebas de Supabase
+- [ ] Crear un proyecto Supabase de prueba y configurar URL + publishable key en `community-config.js` (nunca secret/service_role).
+- [ ] Ejecutar `supabase/schema.sql`, después `supabase/phase2-community.sql`, y revisar las salidas de `supabase/phase4-verify.sql`. Todos los checks esperados deben decir OK.
+- [ ] Configurar Google/Discord y las redirect URLs para el dominio publicado y la callback del proveedor.
+- [ ] Iniciar sesión desde Comunidad y ejecutar «Comprobar conexión»; validar tanto la sesión del servidor como la RPC get_discovery_wall.
+- [ ] En dos perfiles de navegador diferentes, probar crear/unirse a sala, participantes, cronómetro compartido, acciones exclusivas del anfitrión y reconexión.
+- [ ] Probar envío pendiente, aprobación por moderador, rechazo, reporte y ocultar alias. Confirmar que una cuenta normal no puede ver la cola ni moderar.
+- [ ] Revisar en Realtime que la membresía esté privada y que las políticas de receive/send limiten a participantes válidos y control del anfitrión.
+- [ ] Documentar resultados y revisar consola/logs. No declarar la fase completa por el solo hecho de que la sesión y una RPC respondan.
