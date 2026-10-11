@@ -2,6 +2,9 @@
 
 NEXO es una experiencia web en español hecha con HTML, CSS y JavaScript nativo. No requiere npm ni dependencias de compilación.
 
+## Sección Mi agenda
+Incluye temporizador de enfoque, notas locales, tres prioridades flexibles y un balance personal. Las notas, objetivos y preferencias quedan guardados en el navegador del usuario. Las sesiones de enfoque completadas suman puntos locales.
+
 ## Abrir con GitHub Pages
 1. En el repositorio, entrá en **Settings → Pages**.
 2. En Build and deployment, elegí **Deploy from a branch**.
@@ -19,7 +22,8 @@ Abrí `index.html` con un servidor estático local. Si Python está instalado: `
 - Trivia de cinco preguntas por ronda, feedback y puntuación.
 - Juego de palabras con pistas.
 - Tareas persistentes, categorías, fecha opcional, filtros, edición y borrado.
-- Temporizador de enfoque con pausas.
+- Temporizador de enfoque en Mi agenda (5, 25 y 45 minutos), con pausa, reinicio y puntos por sesión.
+- Bloc de notas local, hasta tres prioridades y balance personal editable en Mi agenda.
 - Exportación e importación de datos JSON.
 - Preferencia de tema y diseño adaptable.
 
