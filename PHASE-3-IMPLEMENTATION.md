@@ -7,7 +7,7 @@ Hacer que NEXO se pueda instalar desde navegadores compatibles y abrir su app ba
 ## Implementado
 
 - `manifest.webmanifest`: nombre, idioma es-AR, inicio relativo, ámbito relativo y modo standalone para funcionar también bajo una ruta de proyecto de GitHub Pages.
-- `nexo-icon.svg`: identidad vectorial sin dependencia de archivos remotos.
+- `nexo-icon-192.svg` y `nexo-icon-512.svg`: iconos SVG con dimensiones declaradas de 192×192 y 512×512, más `nexo-icon.svg` como alternativa escalable.
 - `service-worker.js`: precache del shell estático y estrategia de red primero con fallback a caché para archivos propios. La navegación sin red vuelve a `index.html`.
 - `pwa.js`: botón accesible de instalación/ayuda, compatibilidad con el aviso de instalación de navegadores y guía manual para iOS/Android/escritorio.
 - Estado explicativo de conectividad: aclara que noticias y funciones que dependen de servicios externos pueden necesitar internet.
@@ -29,7 +29,7 @@ Hacer que NEXO se pueda instalar desde navegadores compatibles y abrir su app ba
 - No se implementan notificaciones push en segundo plano, sincronización cloud offline, cola de publicaciones ni resolución de conflictos.
 - La instalación depende del navegador y del contexto HTTPS; no todos los navegadores muestran el mismo aviso.
 - El shell local no vuelve offline a Supabase, OAuth, la IA, las noticias ni otros proveedores externos.
-- El icono se incluye en SVG. Antes de distribuir por tiendas o buscar compatibilidad más amplia en iOS, conviene añadir y validar iconos PNG de 192/512 y `apple-touch-icon`.
+- Los iconos manifest son SVG; conviene añadir y validar PNG de 192/512 y un `apple-touch-icon` PNG para ampliar compatibilidad con navegadores y dispositivos, especialmente iOS.
 - Aún hacen falta pruebas reales de navegador y dispositivo; el código por sí solo no certifica una release.
 
 ## Siguiente puerta de calidad
