@@ -60,3 +60,16 @@
 - [ ] Configurar Cloudflare rate limiting para /api/companion y límites de gasto antes del lanzamiento público.
 
 - [ ] Verificar que la salida generada por Compañero de Ruta pase por omni-moderation-latest y que un error de revisión no muestre la salida sin comprobar.
+
+
+## Fase 2 — Comunidad segura
+- [ ] Ejecutar supabase/phase2-community.sql después del esquema de Fase 1 en un proyecto de test y verificar que todas las funciones existen.
+- [ ] Sin conexión Supabase, validar que la sala y el muro se identifiquen como demo; no debe simular usuarios reales ni permitir publicar.
+- [ ] Configurar dos cuentas de prueba; validar OAuth, crear sala, código de invitación, presencia, timer compartido, salida y expiración de heartbeat.
+- [ ] Confirmar que las salas y los canales Realtime son privados y un usuario fuera de la membresía no puede leer ni enviar Presence/Broadcast.
+- [ ] Verificar que sólo el anfitrión puede controlar la sesión y que el anfitrión offline puede ceder el control de manera segura.
+- [ ] Enviar una publicación y confirmar estado pending, límite de caracteres y rechazo de enlaces/contacto. No debe aparecer en el muro antes de aprobación.
+- [ ] Probar moderación con una cuenta de equipo autorizada; cuenta común no puede aprobar, retirar ni ver la cola.
+- [ ] Probar reporte, duplicado de reporte, límites por tiempo y bloqueo de alias en dos cuentas distintas.
+- [ ] Revisar que las consultas públicas nunca devuelvan auth user ID, correo, IP ni metadatos de cuenta.
+- [ ] Confirmar que existe una persona moderadora responsable y un procedimiento de respuesta antes del lanzamiento.
