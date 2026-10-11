@@ -58,3 +58,5 @@
 - [ ] Probar contexto vacío, notas largas, JSON grande, origen no permitido y respuestas del proveedor 401/429/5xx.
 - [ ] Probar lenguaje alimentario neutro, sin inferencias médicas, y sugerencias opcionales.
 - [ ] Configurar Cloudflare rate limiting para /api/companion y límites de gasto antes del lanzamiento público.
+
+- [ ] Verificar que la salida generada por Compañero de Ruta pase por omni-moderation-latest y que un error de revisión no muestre la salida sin comprobar.
