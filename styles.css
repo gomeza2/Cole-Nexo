@@ -208,7 +208,7 @@ body.dark .home-wellbeing-card-footer{border-color:var(--line)}
 body.dark .home-wellbeing-card-footer>span,.dark .home-wellbeing-card-footer>span{color:var(--muted)}
 
 /* Reflejos Ninja — juego de reacción expandible */
-.reflex-card{padding:0;overflow:hidden;align-self:start}
+.reflex-card{position:relative;padding:0;overflow:hidden;align-self:start}
 .reflex-expand-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:21px 22px;border:0;background:linear-gradient(110deg,#fbfcf7,#eef5e1);color:var(--ink);text-align:left;cursor:pointer}
 .reflex-expand-toggle>span:first-child{display:grid;gap:7px}
 .reflex-expand-toggle .section-label{margin:0;color:#63744a}
