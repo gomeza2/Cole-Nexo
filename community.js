@@ -717,9 +717,10 @@
 
     async function refresh() {
     if (!client) return;
+    const wasOnCommunity = Boolean(document.querySelector('.community-page'));
     const response = await client.auth.getSession();
     user = response.data && response.data.session ? response.data.session.user : null;
-    renderHub();
+    if (wasOnCommunity) renderHub();
   }
 
   function init() {
