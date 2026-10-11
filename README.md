@@ -72,3 +72,13 @@ Los datos se guardan en el navegador, no se sincronizan entre dispositivos. No h
 - Tocar antes de tiempo muestra «¡Demasiado rápido!»; al reaccionar tras el verde se mide el tiempo en milisegundos.
 - Tabla Top 3 local ordenada de menor a mayor, guardada en `localStorage`.
 - Confeti y vibración opcional al conseguir un nuevo récord; animaciones reducidas cuando el dispositivo lo solicita.
+
+
+## Resumen del Mundo — noticias en tres tarjetas
+
+- Carrusel horizontal de exactamente tres titulares de GNews, con imagen, categoría y título limitado a 60 caracteres.
+- Consulta titulares de Tecnología, Ciencia y Cultura (la categoría «Cultura» usa la categoría «Entertainment» de GNews), en español y con preferencia por fuentes de Argentina.
+- Botón «Leer resumen» abre un diálogo accesible con un único párrafo corto y enlace al medio original.
+- Requiere una clave gratuita de GNews, ingresada desde la interfaz. La clave se guarda en el almacenamiento local del navegador del usuario y no está escrita en los archivos públicos del repositorio.
+- GNews documenta un límite y una demora de actualización para su plan gratuito; el carrusel se actualiza al enviar una nueva consulta. El componente adapta el número de tarjetas visibles a pantallas grandes, tabletas y móviles, con desplazamiento táctil y respeto por movimiento reducido.
+- Documentación de API: https://docs.gnews.io/endpoints/top-headlines-endpoint
