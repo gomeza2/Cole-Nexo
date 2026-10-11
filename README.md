@@ -29,3 +29,22 @@ Abrí `index.html` con un servidor estático local. Si Python está instalado: `
 
 ## Limitaciones honestas
 Los datos se guardan en el navegador, no se sincronizan entre dispositivos. No hay cuentas ni multijugador. La colección de descubrimientos es estática y los enlaces de fuente deben revisarse periódicamente. La fuente tipográfica remota requiere conexión; existen alternativas del sistema.
+
+## Nuevas ramas: Bienestar y Aprender
+
+### Bienestar cotidiano
+- Check-in local de ánimo y energía percibida, horas de sueño aproximadas y nota personal.
+- Registro flexible de movimiento, pausas y vasos de agua, sin metas obligatorias ni puntuaciones por el cuerpo.
+- Historial de los últimos siete días para observar registros sin rachas ni penalizaciones.
+- Los datos de bienestar quedan en el navegador y no constituyen una evaluación ni recomendación médica.
+
+### Laboratorio de aprendizaje
+- Cuatro rutas: fundamentos de la web, pensamiento científico, creatividad práctica y estrategias de estudio.
+- Doce módulos marcables con descripciones breves y progreso local.
+- Los módulos completados suman puntos de aprendizaje; se pueden desmarcar y el progreso se puede reiniciar sin borrar el resto de los datos.
+
+### Más comodidad y contenido
+- Biblioteca ampliada a 18 descubrimientos, con categorías y enlaces a fuentes de referencia.
+- Navegación horizontal en pantallas pequeñas para acceder a todas las ramas.
+- El buscador reconoce términos de bienestar, organización y aprendizaje.
+- El registro personal, el progreso y los favoritos continúan siendo locales a cada navegador.
