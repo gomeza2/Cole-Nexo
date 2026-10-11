@@ -11,7 +11,10 @@
 <script src="state-store.js" defer></script>
 <script src="news-config.js" defer></script>
 <script src="companion-config.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="community-config.js" defer></script>
 <script src="app.js" defer></script>
+<script src="community.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -25,14 +28,14 @@
 <button class="nav-item" data-view="progreso"><span>↗</span><b>Progreso</b></button>
 <button class="nav-item" data-view="agenda"><span>▤</span><b>Mi agenda</b></button>
 <button class="nav-item" data-view="bienestar"><span>✚</span><b>Bienestar</b></button>
-<button class="nav-item" data-view="aprender"><span>⌘</span><b>Aprender</b></button><button class="nav-item" data-view="neural"><span>◌</span><b>Profundo</b></button><button class="nav-item" data-view="ruta"><span>✧</span><b>Mi Ruta</b></button><button class="nav-item" data-view="ajustes"><span>⚙</span><b>Ajustes</b></button>
+<button class="nav-item" data-view="aprender"><span>⌘</span><b>Aprender</b></button><button class="nav-item" data-view="neural"><span>◌</span><b>Profundo</b></button><button class="nav-item" data-view="ruta"><span>✧</span><b>Mi Ruta</b></button><button class="nav-item" data-view="comunidad"><span>♧</span><b>Comunidad</b></button><button class="nav-item" data-view="ajustes"><span>⚙</span><b>Ajustes</b></button>
 </nav>
 <div class="rail-bottom"><button type="button" class="deep-mode-switch global-deep-switch" role="switch" aria-checked="false" data-action="toggle-deep-mode" aria-label="Activar Modo Profundo"><span class="deep-mode-switch-track"><i></i></span><span class="deep-mode-switch-copy">DEEP</span></button><button class="icon-btn" id="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">◐</button><span class="tiny-label">TU ESPACIO</span></div>
 </aside>
 <div class="mobile-top"><a class="brand" href="#inicio"><span class="brand-mark">n</span><span>NEXO</span></a><div class="mobile-top-actions"><button type="button" class="deep-mode-switch global-deep-switch" role="switch" aria-checked="false" data-action="toggle-deep-mode" aria-label="Activar Modo Profundo"><span class="deep-mode-switch-track"><i></i></span><span class="deep-mode-switch-copy">DEEP</span></button><button class="icon-btn" id="mobile-theme" aria-label="Cambiar tema">◐</button><button class="icon-btn mobile-settings-shortcut" data-view="ajustes" aria-label="Abrir ajustes" title="Ajustes">⚙</button></div></div>
 <nav class="mobile-nav" aria-label="Navegación móvil">
 <button type="button" id="mobile-menu-toggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu-panel"><span class="mobile-menu-toggle-icon" aria-hidden="true">☰</span><span>Menú de NEXO</span><span class="mobile-menu-chevron" aria-hidden="true">⌄</span></button>
-<div id="mobile-menu-panel" class="mobile-menu-panel"><button class="nav-item active" data-view="inicio"><span>⌂</span><b>Inicio</b></button><button class="nav-item" data-view="crear"><span>✳</span><b>Crear</b></button><button class="nav-item" data-view="descubrir"><span>◉</span><b>Descubrir</b></button><button class="nav-item" data-view="jugar"><span>▦</span><b>Jugar</b></button><button class="nav-item" data-view="progreso"><span>↗</span><b>Progreso</b></button><button class="nav-item" data-view="agenda"><span>▤</span><b>Agenda</b></button><button class="nav-item" data-view="bienestar"><span>✚</span><b>Bienestar</b></button><button class="nav-item" data-view="aprender"><span>⌘</span><b>Aprender</b></button><button class="nav-item" data-view="neural"><span>◌</span><b>Profundo</b></button><button class="nav-item" data-view="ruta"><span>✧</span><b>Mi Ruta</b></button><button class="nav-item" data-view="ajustes"><span>⚙</span><b>Ajustes</b></button></div>
+<div id="mobile-menu-panel" class="mobile-menu-panel"><button class="nav-item active" data-view="inicio"><span>⌂</span><b>Inicio</b></button><button class="nav-item" data-view="crear"><span>✳</span><b>Crear</b></button><button class="nav-item" data-view="descubrir"><span>◉</span><b>Descubrir</b></button><button class="nav-item" data-view="jugar"><span>▦</span><b>Jugar</b></button><button class="nav-item" data-view="progreso"><span>↗</span><b>Progreso</b></button><button class="nav-item" data-view="agenda"><span>▤</span><b>Agenda</b></button><button class="nav-item" data-view="bienestar"><span>✚</span><b>Bienestar</b></button><button class="nav-item" data-view="aprender"><span>⌘</span><b>Aprender</b></button><button class="nav-item" data-view="neural"><span>◌</span><b>Profundo</b></button><button class="nav-item" data-view="ruta"><span>✧</span><b>Mi Ruta</b></button><button class="nav-item" data-view="comunidad"><span>♧</span><b>Comunidad</b></button><button class="nav-item" data-view="ajustes"><span>⚙</span><b>Ajustes</b></button></div>
 </nav>
 <main id="main">
 <header class="topbar"><div><p class="eyebrow" id="date-label">TU ESPACIO, A TU RITMO</p><h1 id="page-title">Un poco de todo. A tu manera.</h1></div><div class="top-actions"><label class="search-box"><span>⌕</span><input id="global-search" type="search" placeholder="Buscar en NEXO..." aria-label="Buscar en NEXO"><kbd>↵</kbd></label><button class="avatar" id="profile-button" aria-label="Ver perfil local">TÚ</button></div></header>
