@@ -36,3 +36,15 @@
 - [ ] Exportación/importación y navegación probadas en Chrome, Firefox, Safari iOS y Chrome Android.
 - [ ] Verificar GitHub Pages; para noticias reales, verificar Worker y secreto.
 - [ ] No declarar validado el lanzamiento hasta probar navegadores y dispositivos reales.
+
+
+## Fase 1 — hábitos, analíticas y recordatorios
+- [ ] En Progreso, revisar la tarjeta de actividad semanal con siete días; comprobar que los días sin registro no generan avisos de culpa.
+- [ ] Completar y reabrir una tarea: sólo la primera finalización agrega un evento de actividad.
+- [ ] Completar una sesión de enfoque desde Agenda y desde Progreso; el día actual debe reflejar la sesión.
+- [ ] En Bienestar, comparar ánimo y actividad; los días sin check-in deben aparecer sin puntuación de ánimo.
+- [ ] En Ajustes, comprobar que los recordatorios están apagados por defecto y no se solicita permiso hasta pulsar activar.
+- [ ] Confirmar que los recordatorios se etiquetan como avisos locales mientras la pestaña está activa, no como push en segundo plano.
+- [ ] Exportar e importar JSON con los nuevos campos habitLog y reminderSettings.
+- [ ] Ejecutar supabase/schema.sql sólo en un proyecto de prueba; verificar RLS con dos usuarios distintos y que ningún usuario lea las filas del otro.
+- [ ] Antes de lanzar auth cloud: probar OAuth, migración local idempotente, logout, cambio de usuario, exportación/borrado y conflictos de sincronización.
