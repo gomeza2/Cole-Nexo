@@ -1,0 +1,222 @@
+[
+  {
+    "id": "t01",
+    "type": "Tip",
+    "title": "Hacé una pausa para la vista",
+    "body": "Si llevás un rato frente a una pantalla, mirá algo lejano durante unos segundos y parpadeá con calma."
+  },
+  {
+    "id": "t02",
+    "type": "Receta en 3 pasos",
+    "title": "Tostada con palta",
+    "steps": [
+      "Tostá una rebanada de pan.",
+      "Pisá palta con unas gotas de limón.",
+      "Untá y agregá pimienta o semillas si te gustan."
+    ]
+  },
+  {
+    "id": "t03",
+    "type": "Tip",
+    "title": "El descanso también es productivo",
+    "body": "Un pequeño descanso puede ayudarte a volver a una tarea con más claridad. No tenés que ganártelo."
+  },
+  {
+    "id": "t04",
+    "type": "Receta en 3 pasos",
+    "title": "Yogur con fruta",
+    "steps": [
+      "Poné yogur en un bowl.",
+      "Agregá fruta cortada o congelada.",
+      "Sumá avena o frutos secos si tenés y te gustan."
+    ]
+  },
+  {
+    "id": "t05",
+    "type": "Tip",
+    "title": "Dejá agua a mano",
+    "body": "Tener una botella o vaso cerca puede servir como recordatorio para tomar cuando tengas sed. Las necesidades cambian según cada persona y el día."
+  },
+  {
+    "id": "t06",
+    "type": "Tip",
+    "title": "Probá aflojar los hombros",
+    "body": "Bajá suavemente los hombros, relajá la mandíbula y respirás con naturalidad. Si algo molesta, no lo fuerces."
+  },
+  {
+    "id": "t07",
+    "type": "Receta en 3 pasos",
+    "title": "Sándwich rápido",
+    "steps": [
+      "Elegí pan y una base que te guste.",
+      "Agregá queso, huevo cocido, hummus u otra opción disponible.",
+      "Sumá tomate o alguna verdura y cerralo."
+    ]
+  },
+  {
+    "id": "t08",
+    "type": "Tip",
+    "title": "Una tarea por vez",
+    "body": "Elegí un paso pequeño y concreto. Terminar una parte también cuenta, aunque el proyecto completo siga pendiente."
+  },
+  {
+    "id": "t09",
+    "type": "Tip",
+    "title": "La luz natural puede ayudar a marcar el día",
+    "body": "Si podés, acercate un rato a una ventana o salí al aire libre. Adaptalo al clima y a lo que te resulte cómodo."
+  },
+  {
+    "id": "t10",
+    "type": "Receta en 3 pasos",
+    "title": "Avena cremosa",
+    "steps": [
+      "Mezclá avena con leche o bebida vegetal.",
+      "Calentá en una olla o microondas, removiendo.",
+      "Terminá con banana, canela o la fruta que tengas."
+    ]
+  },
+  {
+    "id": "t11",
+    "type": "Tip",
+    "title": "No hace falta moverse de una sola forma",
+    "body": "Caminar, bailar, jugar, hacer jardinería o estirarte suavemente son distintas maneras de incorporar movimiento si te resultan agradables."
+  },
+  {
+    "id": "t12",
+    "type": "Tip",
+    "title": "Prepará el próximo paso",
+    "body": "Antes de cerrar una tarea, anotá qué harías después. Así te resultará más fácil retomarla cuando vuelvas."
+  },
+  {
+    "id": "t13",
+    "type": "Receta en 3 pasos",
+    "title": "Ensalada de garbanzos",
+    "steps": [
+      "Enjuagá garbanzos cocidos de lata o frasco.",
+      "Mezclá con tomate y pepino picados.",
+      "Condimentá con aceite, limón y sal a gusto."
+    ]
+  },
+  {
+    "id": "t14",
+    "type": "Tip",
+    "title": "La respiración no tiene que ser perfecta",
+    "body": "Probá inhalar y exhalar a un ritmo cómodo durante unos ciclos. Si concentrarte en la respiración te incomoda, volvé a respirar con normalidad."
+  },
+  {
+    "id": "t15",
+    "type": "Tip",
+    "title": "Poné una alarma para hacer una pausa",
+    "body": "Un recordatorio amable cada tanto puede ayudarte a levantarte, cambiar de postura o descansar la atención."
+  },
+  {
+    "id": "t16",
+    "type": "Receta en 3 pasos",
+    "title": "Banana con mantequilla de maní",
+    "steps": [
+      "Pelá una banana y cortala en rodajas.",
+      "Agregá una pequeña cantidad de mantequilla de maní o la pasta que prefieras.",
+      "Terminá con canela o avena, si querés."
+    ]
+  },
+  {
+    "id": "t17",
+    "type": "Tip",
+    "title": "El sueño no se arregla en una sola noche",
+    "body": "Una rutina tranquila y horarios relativamente regulares pueden ayudar. Si dormir te cuesta con frecuencia, hablarlo con un adulto de confianza o un profesional puede servir."
+  },
+  {
+    "id": "t18",
+    "type": "Tip",
+    "title": "Hacé espacio para algo agradable",
+    "body": "Reservá unos minutos para música, dibujar, leer, charlar o cualquier actividad que disfrutes sin convertirla en otra obligación."
+  },
+  {
+    "id": "t19",
+    "type": "Receta en 3 pasos",
+    "title": "Wrap de hummus",
+    "steps": [
+      "Untá hummus sobre una tortilla o pan plano.",
+      "Agregá verduras lavadas y cortadas.",
+      "Enrollá y cortá por la mitad."
+    ]
+  },
+  {
+    "id": "t20",
+    "type": "Tip",
+    "title": "Ajustá la silla a tu comodidad",
+    "body": "Apoyá los pies si podés, cambiá de postura cuando lo necesites y acomodá la pantalla para no tener que inclinarte continuamente."
+  },
+  {
+    "id": "t21",
+    "type": "Tip",
+    "title": "Pedí ayuda antes de estar al límite",
+    "body": "Compartir una duda o pedir que te expliquen una parte puede ahorrar frustración. No hace falta resolver todo en soledad."
+  },
+  {
+    "id": "t22",
+    "type": "Receta en 3 pasos",
+    "title": "Huevos revueltos",
+    "steps": [
+      "Batí uno o dos huevos en un recipiente.",
+      "Cociná en una sartén a fuego medio-bajo, revolviendo.",
+      "Serví cuando estén completamente cocidos y acompañá con pan o verduras."
+    ]
+  },
+  {
+    "id": "t23",
+    "type": "Tip",
+    "title": "Elegí un objetivo amable",
+    "body": "En lugar de intentar cambiar todo, probá con algo pequeño para hoy. También vale decidir que hoy necesitás descansar."
+  },
+  {
+    "id": "t24",
+    "type": "Tip",
+    "title": "Ventilá el espacio si es posible",
+    "body": "Abrir una ventana un rato, cuando el clima y el entorno lo permiten, puede renovar el aire de una habitación."
+  },
+  {
+    "id": "t25",
+    "type": "Receta en 3 pasos",
+    "title": "Licuado sencillo",
+    "steps": [
+      "Poné leche o bebida vegetal en la licuadora.",
+      "Agregá banana u otra fruta madura.",
+      "Licuá hasta que quede suave; no hace falta añadir azúcar."
+    ]
+  },
+  {
+    "id": "t26",
+    "type": "Tip",
+    "title": "Cambiá de postura con suavidad",
+    "body": "No existe una única postura perfecta para todo el día. Moverte un poco y buscar comodidad suele ser más útil que quedarte rígido."
+  },
+  {
+    "id": "t27",
+    "type": "Tip",
+    "title": "Hacé una lista de descarga mental",
+    "body": "Anotá todo lo que te ronda la cabeza y después elegí una sola cosa para atender primero. El resto puede esperar."
+  },
+  {
+    "id": "t28",
+    "type": "Receta en 3 pasos",
+    "title": "Manzana con yogur",
+    "steps": [
+      "Lavá y cortá una manzana.",
+      "Servila con yogur en un bowl.",
+      "Agregá canela, avena o semillas si te gustan."
+    ]
+  },
+  {
+    "id": "t29",
+    "type": "Tip",
+    "title": "Tomá en cuenta cómo te sentís",
+    "body": "Una actividad que hoy te resulta cómoda puede no serlo otro día. Adaptarla, hacer menos o parar también son opciones válidas."
+  },
+  {
+    "id": "t30",
+    "type": "Tip",
+    "title": "Cerrá el día con una pequeña victoria",
+    "body": "Pensá en una cosa que aprendiste, disfrutaste o atravesaste hoy. No tiene que ser enorme para que cuente."
+  }
+]
