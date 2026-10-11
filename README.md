@@ -130,3 +130,12 @@ Los datos se guardan en el navegador, no se sincronizan entre dispositivos. No h
 3. Ejecutá `wrangler deploy` desde la raíz del repositorio.
 4. Configurá `window.NEXO_NEWS_ENDPOINT` en `news-config.js` con la URL HTTPS final del Worker.
 5. Ajustá `ALLOWED_ORIGIN` en `wrangler.toml` si el sitio usa otro dominio. Si falla el servicio, vuelven las tarjetas DEMO.
+
+
+## Fase 1 — Retención y ecosistema de hábitos
+
+- **Ritmo flexible:** resumen de actividad en los últimos siete días, sin rachas punitivas.
+- **Ánimo y actividad:** visualización local del check-in de ánimo frente a sesiones de enfoque y tareas completadas, con nota explícita de que no establece causalidad.
+- **Recordatorios amables:** opt-in, intervalos configurables y sólo mientras la pestaña está abierta; las notificaciones push reales en segundo plano todavía requieren Service Worker y backend.
+- **Base Supabase preparada:** esquema SQL inicial con RLS por usuario en `supabase/schema.sql`. La autenticación y la sincronización cloud aún requieren un proyecto Supabase configurado.
+- **Guía de implementación y pruebas:** ver `PHASE-1-IMPLEMENTATION.md`.
