@@ -1,0 +1,23 @@
+{
+  "id": "./",
+  "name": "NEXO — Tu espacio para descubrir",
+  "short_name": "NEXO",
+  "description": "Un espacio para crear, descubrir, jugar, aprender, organizarte y cuidarte a tu manera.",
+  "lang": "es-AR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#f6f5f0",
+  "theme_color": "#f6f5f0",
+  "categories": ["education", "productivity", "lifestyle"],
+  "icons": [
+    {
+      "src": "./nexo-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
