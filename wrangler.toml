@@ -1,0 +1,7 @@
+name = "nexo-news-proxy"
+main = "workers/news-worker.js"
+compatibility_date = "2026-10-11"
+workers_dev = true
+
+[vars]
+ALLOWED_ORIGIN = "https://gomeza2.github.io"
