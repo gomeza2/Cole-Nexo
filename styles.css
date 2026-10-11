@@ -127,7 +127,7 @@ body.dark .learn-label{color:#c8d9ed}
 .meme-search-form{display:flex;align-items:center;gap:8px}
 .meme-search-box{display:flex;align-items:center;gap:8px;flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:0 11px;background:var(--bg)}
 .meme-search-box>span{font-size:22px;color:var(--muted);line-height:1}
-.meme-search-box input{min-width:0;width:100%;height:43px;border:0;outline:0;background:transparent;color:var(--ink);font:12px inherit}
+.meme-search-box input{min-width:0;width:100%;height:43px;border:0;outline:0;background:transparent;color:var(--ink);font-size:12px;font-family:inherit}
 .meme-search-form .btn{height:43px;border-radius:12px;padding:0 16px}
 .meme-search-tags{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 15px}
 .meme-search-tags button{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:7px 10px;font-size:10px;cursor:pointer;transition:background .15s,color .15s}
