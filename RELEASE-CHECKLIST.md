@@ -73,3 +73,16 @@
 - [ ] Probar reporte, duplicado de reporte, límites por tiempo y bloqueo de alias en dos cuentas distintas.
 - [ ] Revisar que las consultas públicas nunca devuelvan auth user ID, correo, IP ni metadatos de cuenta.
 - [ ] Confirmar que existe una persona moderadora responsable y un procedimiento de respuesta antes del lanzamiento.
+
+
+## Fase 3 — PWA y funcionamiento offline
+- [ ] Publicar en HTTPS y comprobar que `manifest.webmanifest` carga sin error.
+- [ ] Verificar el nombre, ámbito y ruta inicial desde la URL real de GitHub Pages, incluida la ruta de subdirectorio del proyecto.
+- [ ] Abrir online y esperar la instalación del Service Worker; comprobar que el cache contiene sólo el shell estático.
+- [ ] Poner el navegador en modo Offline, recargar y confirmar que abre `index.html` desde la caché.
+- [ ] En modo Offline, probar notas, tareas y temporizador; confirmar que noticias, Supabase y la IA no se presentan como conectados.
+- [ ] En línea, editar/publicar una nueva versión y comprobar que los archivos se actualizan sin quedarse permanentemente en caché antigua.
+- [ ] Probar las instrucciones manuales de iOS Safari y el flujo nativo de instalación en un navegador compatible.
+- [ ] Comprobar teclado, Escape, foco, pantalla de 320–390 px y tema oscuro del panel de instalación.
+- [ ] Revisar Service Worker y consola en Chrome, Firefox, Safari iOS y Chrome Android reales antes de declarar la release validada.
+- [ ] Considerar iconos PNG de 192/512 y `apple-touch-icon` antes de ampliar la distribución; no declarar compatibilidad universal con el icono SVG únicamente.
