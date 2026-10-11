@@ -59,16 +59,17 @@ rpc_checks as (
     'RPC'::text as category,
     e.signature::text as object_name,
     (
-      to_regprocedure(e.signature) is not null
-      and coalesce(has_function_privilege('authenticated', to_regprocedure(e.signature), 'EXECUTE'), false)
+      p.oid is not null
+      and coalesce(has_function_privilege('authenticated', p.oid, 'EXECUTE'), false)
     ) as ok,
     case
-      when to_regprocedure(e.signature) is null then 'Falta la función RPC: ejecutar Fase 2 completa.'
-      when not coalesce(has_function_privilege('authenticated', to_regprocedure(e.signature), 'EXECUTE'), false)
+      when p.oid is null then 'Falta la función RPC: ejecutar Fase 2 completa.'
+      when not coalesce(has_function_privilege('authenticated', p.oid, 'EXECUTE'), false)
         then 'La función existe pero authenticated no tiene EXECUTE.'
       else 'La función existe y authenticated tiene EXECUTE.'
     end::text as details
   from expected_rpcs e
+  left join pg_proc p on p.oid = to_regprocedure(e.signature)::oid
 ),
 expected_policies(schemaname, tablename, policyname) as (
   values
