@@ -179,6 +179,7 @@ declare
   v_room_id uuid;
   v_code text;
   v_capacity integer;
+  v_recent_count integer;
   v_attempt integer := 0;
   v_duration integer := coalesce(p_duration_minutes, 25);
   v_title text := trim(coalesce(p_title, ''));
@@ -191,6 +192,12 @@ begin
   end if;
   if v_duration not in (5,15,25,45) then
     raise exception 'Invalid focus duration' using errcode = '22023';
+  end if;
+
+  select count(*)::integer into v_recent_count from public.focus_rooms r
+    where r.host_user_id = (select auth.uid()) and r.created_at > now() - interval '1 hour';
+  if v_recent_count >= 5 then
+    raise exception 'Room creation limit reached. Try again later.' using errcode = '54000';
   end if;
 
   perform public.ensure_community_identity();
@@ -492,7 +499,7 @@ security definer
 set search_path = ''
 as $$
   select p.id, p.body::text, p.created_at, ci.alias_id,
-    'Anónimo · ' || upper(substr(replace(ci.alias_id::text, '-', ''), 1, 4))
+    'Anónimo · ' || upper(substr(replace(ci.alias_id::text, '-', ''), 1, 6))
   from public.discovery_posts p
   join public.community_identities ci on ci.user_id = p.author_id
   where p.status = 'approved'
@@ -585,7 +592,7 @@ begin
   end if;
   return query
     select p.id, p.body::text, p.created_at,
-      'Anónimo · ' || upper(substr(replace(ci.alias_id::text, '-', ''), 1, 4)),
+      'Anónimo · ' || upper(substr(replace(ci.alias_id::text, '-', ''), 1, 6)),
       p.status::text,
       count(r.id)::integer,
       coalesce(array_agg(distinct r.reason) filter (where r.reason is not null), array[]::text[])
