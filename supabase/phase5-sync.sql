@@ -68,7 +68,7 @@ declare
   v_user_id uuid := auth.uid();
   v_snapshot public.nexo_user_snapshots%rowtype;
   v_new_version bigint;
-  v_now timestamptz := clock_timestamp();
+  v_now timestamptz;
 begin
   if v_user_id is null then
     raise exception 'Authentication required' using errcode = '42501';
@@ -88,11 +88,32 @@ begin
   if octet_length(p_payload::text) > 1500000 then
     raise exception 'Snapshot exceeds the 1.5 MB limit' using errcode = '22023';
   end if;
+  if exists (
+    select 1
+    from jsonb_object_keys(p_payload -> 'local') as item(key)
+    where item.key not in (
+      'nexo.wellbeing.home.v1',
+      'nexo-reflex-ninja-top3-v1',
+      'nexo-discovery-learned-v1',
+      'nexo.companion.weekly.v1',
+      'nexo.companion.reflection.v1'
+    )
+  ) then
+    raise exception 'Snapshot contains an unsupported local key' using errcode = '22023';
+  end if;
+  if exists (
+    select 1
+    from jsonb_each(p_payload -> 'local') as item(key, value)
+    where jsonb_typeof(item.value) <> 'string'
+  ) then
+    raise exception 'Local snapshot values must be JSON strings' using errcode = '22023';
+  end if;
 
   -- Serialize first-write and update attempts for the same account.
   perform pg_catalog.pg_advisory_xact_lock(
     pg_catalog.hashtextextended(v_user_id::text, 0)
   );
+  v_now := clock_timestamp();
 
   select *
     into v_snapshot
