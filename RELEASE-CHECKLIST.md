@@ -97,3 +97,18 @@
 - [ ] Probar envío pendiente, aprobación por moderador, rechazo, reporte y ocultar alias. Confirmar que una cuenta normal no puede ver la cola ni moderar.
 - [ ] Revisar en Realtime que la membresía esté privada y que las políticas de receive/send limiten a participantes válidos y control del anfitrión.
 - [ ] Documentar resultados y revisar consola/logs. No declarar la fase completa por el solo hecho de que la sesión y una RPC respondan.
+
+
+## Fase 5 — copia en la nube, consentimiento y conflictos
+- [ ] Ejecutar `supabase/phase5-sync.sql` después de las fases 1 y 2; luego todos los checks de `supabase/phase5-verify.sql` deben decir OK.
+- [ ] Confirmar que la tabla no permite SELECT/INSERT/UPDATE/DELETE directo por `anon` ni `authenticated`; el acceso debe pasar por las RPC autenticadas.
+- [ ] Sin Supabase configurado, Ajustes debe explicar el bloqueo y no enviar datos.
+- [ ] Iniciar sesión en Comunidad; comprobar que la casilla de consentimiento para nube inicia apagada tras abrir Ajustes o cambiar de cuenta.
+- [ ] Confirmar que no se llama `get_nexo_snapshot` hasta marcar el consentimiento y tocar «Revisar copia».
+- [ ] Crear la primera copia desde un navegador; comprobar versión 1 y fecha de actualización en el estado.
+- [ ] En otro dispositivo/perfil con la misma cuenta, revisar y restaurar la copia, pero primero exportar los datos locales como JSON.
+- [ ] Probar cargas concurrentes desde dos dispositivos. Una versión obsoleta debe producir conflicto, no sobrescritura silenciosa.
+- [ ] Probar usuario sin sesión, error de red, RPC faltante, JSON inválido, datos auxiliares malformados y copia mayor a 1,5 MB.
+- [ ] Cambiar cuenta y cerrar sesión; comprobar que la aprobación de consentimiento se limpia y que no queda visible una copia de otra cuenta.
+- [ ] Confirmar que Compañero de Ruta/los datos de bienestar sólo se suben tras una acción explícita y que la interfaz explica qué datos puede incluir la copia.
+- [ ] No declarar sincronización multi-dispositivo completa sin pruebas reales con dos sesiones del mismo usuario y dos dispositivos.
