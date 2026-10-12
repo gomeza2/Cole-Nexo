@@ -860,6 +860,7 @@
     renderHub: renderHub,
     handleAction: handleAction,
     refresh: refresh,
+    getClient: function () { return client; },
     isConnected: function () { return Boolean(client && user); }
   };
   init();
