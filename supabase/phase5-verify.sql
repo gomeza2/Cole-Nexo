@@ -30,6 +30,24 @@ with checks as (
     'El navegador no debe insertar directamente en la tabla.'
   union all
   select
+    'DIRECT_ACCESS',
+    'authenticated UPDATE public.nexo_user_snapshots',
+    not coalesce(has_table_privilege('authenticated',to_regclass('public.nexo_user_snapshots')::oid,'UPDATE'), false),
+    'El navegador no debe actualizar directamente la tabla.'
+  union all
+  select
+    'DIRECT_ACCESS',
+    'authenticated DELETE public.nexo_user_snapshots',
+    not coalesce(has_table_privilege('authenticated',to_regclass('public.nexo_user_snapshots')::oid,'DELETE'), false),
+    'El navegador no debe eliminar directamente de la tabla.'
+  union all
+  select
+    'DIRECT_ACCESS',
+    'anon SELECT public.nexo_user_snapshots',
+    not coalesce(has_table_privilege('anon',to_regclass('public.nexo_user_snapshots')::oid,'SELECT'), false),
+    'Los usuarios sin sesión tampoco deben leer la tabla directamente.'
+  union all
+  select
     'RPC',
     'public.get_nexo_snapshot()',
     to_regprocedure('public.get_nexo_snapshot()') is not null
