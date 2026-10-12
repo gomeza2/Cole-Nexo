@@ -20,6 +20,7 @@
   let busy = false;
   let lastRemote = null;
   let mounted = false;
+  let sessionKnown = false;
 
   const $ = (selector) => document.querySelector(selector);
 
@@ -102,7 +103,8 @@
       });
     }
     updateControls();
-    if (client) refreshSession().catch(() => {
+    if (client && !sessionKnown) refreshSession().catch(() => {
+      sessionKnown = false;
       currentUserId = "";
       explainInitialState();
       updateControls();
@@ -115,6 +117,7 @@
     const result = await client.auth.getSession();
     const id = result.data && result.data.session && result.data.session.user
       ? result.data.session.user.id : "";
+    sessionKnown = true;
     if (id !== currentUserId) {
       lastRemote = null;
       consented = false;
@@ -289,8 +292,6 @@
     busy = value;
     if (message) setStatus(message, "info");
     updateControls();
-    const buttons = document.querySelectorAll("[data-cloud-action]");
-    buttons.forEach((button) => { button.textContent = button.dataset.label || button.textContent; });
   }
 
   document.addEventListener("click", async (event) => {
@@ -306,6 +307,7 @@
   if (client) {
     client.auth.onAuthStateChange((_event, session) => {
       const id = session && session.user ? session.user.id : "";
+      sessionKnown = true;
       if (id !== currentUserId) {
         lastRemote = null;
         consented = false;
