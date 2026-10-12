@@ -85,6 +85,7 @@
     if (!$("#nexo-cloud-sync-panel")) return;
     mounted = true;
     const checkbox = $("#nexo-cloud-consent");
+    consented = Boolean(checkbox && checkbox.checked);
     if (checkbox && !checkbox.dataset.cloudBound) {
       checkbox.dataset.cloudBound = "true";
       checkbox.addEventListener("change", () => {
@@ -114,7 +115,12 @@
     const result = await client.auth.getSession();
     const id = result.data && result.data.session && result.data.session.user
       ? result.data.session.user.id : "";
-    if (id !== currentUserId) lastRemote = null;
+    if (id !== currentUserId) {
+      lastRemote = null;
+      consented = false;
+      const checkbox = $("#nexo-cloud-consent");
+      if (checkbox) checkbox.checked = false;
+    }
     currentUserId = id;
     if (mounted && !consented) explainInitialState();
     updateControls();
@@ -300,7 +306,12 @@
   if (client) {
     client.auth.onAuthStateChange((_event, session) => {
       const id = session && session.user ? session.user.id : "";
-      if (id !== currentUserId) lastRemote = null;
+      if (id !== currentUserId) {
+        lastRemote = null;
+        consented = false;
+        const checkbox = $("#nexo-cloud-consent");
+        if (checkbox) checkbox.checked = false;
+      }
       currentUserId = id;
       if (mounted && !consented) explainInitialState();
       updateControls();
