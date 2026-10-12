@@ -20,13 +20,13 @@ with checks as (
   select
     'DIRECT_ACCESS',
     'authenticated SELECT public.nexo_user_snapshots',
-    not coalesce(has_table_privilege('authenticated','public.nexo_user_snapshots','SELECT'), false),
+    not coalesce(has_table_privilege('authenticated',to_regclass('public.nexo_user_snapshots')::oid,'SELECT'), false),
     'El navegador no debe leer la tabla directamente; usa RPC autenticadas.'
   union all
   select
     'DIRECT_ACCESS',
     'authenticated INSERT public.nexo_user_snapshots',
-    not coalesce(has_table_privilege('authenticated','public.nexo_user_snapshots','INSERT'), false),
+    not coalesce(has_table_privilege('authenticated',to_regclass('public.nexo_user_snapshots')::oid,'INSERT'), false),
     'El navegador no debe insertar directamente en la tabla.'
   union all
   select
