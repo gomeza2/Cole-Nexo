@@ -188,3 +188,12 @@ Para conectar el backend, sigue **PHASE-2-IMPLEMENTATION.md** y ejecuta primero 
 - La pantalla Comunidad incluye **Comprobar conexión** una vez iniciada la sesión. Valida la sesión con el servidor y prueba la RPC `get_discovery_wall`; los resultados explican si hay que revisar la migración SQL.
 - El diagnóstico en el navegador no demuestra que todas las políticas estén bien ni que Realtime funcione entre cuentas. Ejecutá `supabase/phase4-verify.sql` en SQL Editor después de las fases 1 y 2, y seguí `PHASE-4-IMPLEMENTATION.md`.
 - La conexión real sigue dependiendo de un proyecto Supabase, la URL HTTPS, una publishable key, OAuth/redirects, políticas Realtime privadas y pruebas con dos cuentas distintas. Nunca uses `service_role` en el navegador.
+
+
+## Fase 5 — copia personal privada en la nube
+
+- Ajustes incorpora una copia personal manual en Supabase. Es opt-in: la casilla empieza apagada y no hay carga ni descarga automática.
+- La copia incluye el estado de NEXO y una lista explícita de registros locales compatibles. Puede contener notas personales y de bienestar; activala sólo si entendés que esos datos se almacenarán en tu proyecto privado.
+- El almacenamiento usa `nexo_user_snapshots` y RPC autenticadas con RLS, sin acceso directo de la app a la tabla. Las escrituras usan versiones optimistas para detener y mostrar conflictos, no resolverlos silenciosamente.
+- Antes de usar: ejecutar `supabase/phase5-sync.sql` después de los esquemas de fases 1 y 2, revisar con `supabase/phase5-verify.sql`, configurar `community-config.js` y autenticarte desde Comunidad. Guía: `PHASE-5-IMPLEMENTATION.md`.
+- No reemplaza un backup exportado: exportá JSON antes de restaurar. La sincronización no combina datos; elegir subir o restaurar reemplaza la copia completa correspondiente.
