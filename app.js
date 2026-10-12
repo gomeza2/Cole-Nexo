@@ -583,7 +583,10 @@ function getNexoSyncSnapshot(){
  const local={};
  for(const key of [WELLBEING_HOME_KEY,REFLEX_STORAGE_KEY,DISCOVERY_DAILY_KEY,COMPANION_WEEKLY_KEY,COMPANION_REFLECTION_KEY]){
   const raw=readLocal(key);
-  if(typeof raw==='string'&&validateSyncLocalValue(key,raw))local[key]=raw;
+  if(raw!==null&&raw!==undefined){
+   if(typeof raw!=='string'||!validateSyncLocalValue(key,raw))throw new Error('Un registro local auxiliar tiene un formato inesperado. Exportá una copia JSON antes de sincronizar.');
+   local[key]=raw;
+  }
  }
  return {product:'NEXO',schemaVersion:1,state:JSON.parse(JSON.stringify(state)),local};
 }
