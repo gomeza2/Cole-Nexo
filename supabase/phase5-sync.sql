@@ -77,9 +77,12 @@ begin
     raise exception 'Invalid expected version' using errcode = '22023';
   end if;
   if p_payload is null or jsonb_typeof(p_payload) <> 'object'
-     or p_payload ->> 'product' <> 'NEXO'
-     or jsonb_typeof(p_payload -> 'state') <> 'object'
-     or jsonb_typeof(p_payload -> 'local') <> 'object' then
+     or coalesce(p_payload ->> 'product', '') <> 'NEXO'
+     or coalesce(p_payload ->> 'schemaVersion', '') <> '1'
+     or coalesce(jsonb_typeof(p_payload -> 'state'), '') <> 'object'
+     or coalesce(jsonb_typeof(p_payload #> '{state,tasks}'), '') <> 'array'
+     or coalesce(jsonb_typeof(p_payload #> '{state,favorites}'), '') <> 'array'
+     or coalesce(jsonb_typeof(p_payload -> 'local'), '') <> 'object' then
     raise exception 'Invalid NEXO snapshot format' using errcode = '22023';
   end if;
   if octet_length(p_payload::text) > 1500000 then
