@@ -8,11 +8,11 @@
   const PROJECT_URL = String(window.NEXO_SUPABASE_URL || "").trim().replace(/\/$/, "");
   const PUBLIC_KEY = String(window.NEXO_SUPABASE_PUBLISHABLE_KEY || "").trim();
   const configured = Boolean(PROJECT_URL && PUBLIC_KEY && /^https:\/\/.+\.supabase\.co$/.test(PROJECT_URL));
-  const client = configured && window.supabase && typeof window.supabase.createClient === "function"
-    ? window.supabase.createClient(PROJECT_URL, PUBLIC_KEY, {
-        auth: { autoRefreshToken: true, persistSession: true, detectSessionInUrl: true }
-      })
-    : null;
+  // Reuse Comunidad's authenticated client to avoid duplicate Supabase Auth instances.
+  const client = configured && window.NexoCommunity &&
+    typeof window.NexoCommunity.getClient === "function"
+      ? window.NexoCommunity.getClient()
+      : null;
 
   const MAX_SNAPSHOT_BYTES = 1500000;
   let currentUserId = "";
